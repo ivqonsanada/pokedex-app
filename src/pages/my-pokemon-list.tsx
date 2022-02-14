@@ -1,5 +1,7 @@
+import Container from "components/layout/container";
+
 const MyPokemonList = () => {
-  return <div>My Pokemon List</div>;
+  return <Container>My Pokemon List</Container>;
 };
 
 export default MyPokemonList;
