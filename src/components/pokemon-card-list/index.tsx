@@ -8,7 +8,7 @@ const PokemonCardList = () => {
   const containerStyle = css({
     display: "grid",
     gridTemplateColumns: "repeat( auto-fit, minmax(160px, 1fr))",
-    gap: "8px",
+    gap: "16px",
   });
 
   return (

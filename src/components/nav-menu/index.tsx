@@ -18,11 +18,11 @@ const NavMenu = () => {
 
   const containerStyle = css({
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    borderTop: "solid 1px #c0c0c0",
+    gridTemplateColumns: "1fr 1fr",
+    // borderTop: "solid 1px #c0c0c0",
     width: "100%",
     maxWidth: "414px",
-    backgroundColor: "white",
+    backgroundColor: "rgb(71 85 105)",
   });
 
   const items = [

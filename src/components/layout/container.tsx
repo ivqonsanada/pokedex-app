@@ -7,7 +7,9 @@ const Container: React.FC = ({ children }) => {
   const containerStyle = css({
     maxWidth: 414,
     margin: "0 auto",
-    padding: "56px 0 80px",
+    padding: "68px 0 80px",
+    minHeight: "100vh",
+    backgroundColor: "rgb(15 23 42)",
   });
 
   return (

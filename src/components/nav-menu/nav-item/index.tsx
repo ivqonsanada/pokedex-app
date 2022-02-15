@@ -14,7 +14,7 @@ type Props = {
 const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
   const linkStyle = css({
     textDecoration: "none",
-    color: "black",
+    color: "white",
   });
 
   const containerStyle = css({
@@ -30,8 +30,7 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
   });
 
   const activeStyle = css({
-    backgroundColor: "#e7eff9",
-    backgroundImage: "linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%)",
+    backgroundColor: "rgb(51 65 85)",
     // fontWeight: "bold",
   });
 
@@ -45,8 +44,7 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
 
   const activeIconStyle = css({
     transform: "translateY(-40%) scale(1.2)",
-    backgroundColor: "#e7eff9",
-    backgroundImage: "linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%)",
+    backgroundColor: "rgb(51 65 85)",
     borderRadius: "100%",
   });
 
