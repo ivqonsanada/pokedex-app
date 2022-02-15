@@ -32,11 +32,15 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
   const ownedContainerStyle = css({
     display: "inline-block",
     backgroundColor: "rgb(51 65 85)",
-    padding: "12px 8px",
+    padding: "8px 16px",
     borderRadius: "0.25em",
     margin: "8px 0 -16px",
     "* + *": {
       marginLeft: "4px",
+    },
+    "span:first-child": {
+      fontWeight: "bold",
+      fontSize: "1.2em",
     },
   });
 
@@ -50,7 +54,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
         <p css={nameStyle}>{name[0].toUpperCase() + name.slice(1)}</p>
         <div>
           <p css={ownedContainerStyle}>
-            <span>Owned</span> <span>0</span>
+            <span>0</span> <span>Owned</span>
           </p>
         </div>
       </div>
