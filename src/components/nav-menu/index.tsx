@@ -22,6 +22,7 @@ const NavMenu = () => {
     borderTop: "solid 1px #c0c0c0",
     width: "100%",
     maxWidth: "414px",
+    backgroundColor: "white",
   });
 
   const items = [
