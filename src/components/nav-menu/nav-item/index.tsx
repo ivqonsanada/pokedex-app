@@ -29,7 +29,7 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
     },
   });
 
-  const activeItemStyle = css({
+  const activeStyle = css({
     backgroundColor: "#e7eff9",
     backgroundImage: "linear-gradient(315deg, #e7eff9 0%, #cfd6e6 74%)",
     // fontWeight: "bold",
@@ -53,7 +53,7 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
   const nameStyle = css({});
 
   return (
-    <Link to={path} css={[linkStyle, isActive && activeItemStyle]}>
+    <Link to={path} css={[linkStyle, isActive && activeStyle]}>
       <p css={containerStyle}>
         <Icon icon={icon} css={[iconStyle, isActive && activeIconStyle]} />
         <span css={nameStyle}>{name}</span>

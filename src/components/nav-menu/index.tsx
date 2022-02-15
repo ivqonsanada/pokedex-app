@@ -12,15 +12,16 @@ const NavMenu = () => {
   const baseStyle = css({
     position: "fixed",
     bottom: 0,
-    width: "100%",
     zIndex: 100,
+    width: "100%",
   });
 
   const containerStyle = css({
     display: "grid",
     gridTemplateColumns: "repeat(2, 1fr)",
-    width: "100%",
     borderTop: "solid 1px #c0c0c0",
+    width: "100%",
+    maxWidth: "414px",
   });
 
   const items = [
