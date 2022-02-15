@@ -28,12 +28,12 @@ const NavMenu = () => {
   const items = [
     {
       icon: baselineCatchingPokemon,
-      name: "Catch Pokemon",
+      name: "Catch Pokémon",
       path: "/",
     },
     {
       icon: uiUserProfile,
-      name: "My Pokemon",
+      name: "My Pokémon",
       path: "/my-pokemon",
     },
   ];

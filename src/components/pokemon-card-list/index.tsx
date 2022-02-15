@@ -14,7 +14,7 @@ const PokemonCardList = () => {
   return (
     <div css={containerStyle}>
       {pokemonListData.results.map((item) => {
-        return <PokemonCardItem {...item} />;
+        return <PokemonCardItem key={item.id} {...item} />;
       })}
     </div>
   );

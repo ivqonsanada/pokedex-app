@@ -54,6 +54,8 @@
     ]
   },
   "devDependencies": {
+    "@iconify/icons-akar-icons": "^1.2.0",
+    "@iconify/icons-ant-design": "^1.2.0",
     "@iconify/icons-bi": "^1.2.0",
     "@iconify/icons-fluent": "^1.2.0",
     "@iconify/icons-healthicons": "^1.2.0",
