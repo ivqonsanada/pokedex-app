@@ -3,7 +3,6 @@
 import { css } from "@emotion/react";
 import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
-// import heartFilled from "@iconify/icons-ant-design/heart-filled";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
@@ -59,12 +58,6 @@ const TopBar = () => {
     },
   });
 
-  //   const heartIconStyle = css({
-  //     color: "white",
-  //     opacity: 0.4,
-  //     cursor: "pointer",
-  //   });
-
   useEffect(() => {
     console.log(location);
     if (location.pathname.match(/\/pokemon\//)) setIsDeepPath(true);
@@ -88,7 +81,6 @@ const TopBar = () => {
           <span css={emptyIconStyle}></span>
         )}
         <span css={textStyle}>Pokédex</span>
-        {/* <Icon icon={heartFilled} css={[iconStyle, heartIconStyle]} /> */}
         <span css={emptyIconStyle}></span>
       </p>
     </div>

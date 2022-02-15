@@ -38,7 +38,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
     "* + *": {
       marginLeft: "4px",
     },
-    "span:first-child": {
+    "span:first-of-type": {
       fontWeight: "bold",
       fontSize: "1.2em",
     },
