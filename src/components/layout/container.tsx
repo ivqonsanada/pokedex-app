@@ -2,21 +2,31 @@
 import { css } from "@emotion/react";
 import NavMenu from "components/nav-menu";
 import TopBar from "components/top-bar";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 const Container: React.FC = ({ children }) => {
+  const [isDeepPath, setIsDeepPath] = useState(false);
+  const location = useLocation();
+
   const containerStyle = css({
     maxWidth: 414,
     margin: "0 auto",
-    padding: "68px 0 80px",
+    padding: "64px 0 96px",
     minHeight: "100vh",
     backgroundColor: "rgb(15 23 42)",
   });
 
+  useEffect(() => {
+    if (location.pathname.match(/\/pokemon\//)) setIsDeepPath(true);
+    else setIsDeepPath(false);
+  }, [location]);
+
   return (
     <div css={containerStyle}>
-      <TopBar />
+      <TopBar isDeepPath={isDeepPath} />
       {children}
-      <NavMenu />
+      <NavMenu isDeepPath={isDeepPath} />
     </div>
   );
 };

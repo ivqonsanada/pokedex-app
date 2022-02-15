@@ -6,7 +6,11 @@ import NavItem from "./nav-item";
 import { useLocation } from "react-router";
 import { css } from "@emotion/react";
 
-const NavMenu = () => {
+type Props = {
+  isDeepPath: boolean;
+};
+
+const NavMenu: React.FC<Props> = ({ isDeepPath }) => {
   const location = useLocation();
 
   const baseStyle = css({
@@ -17,7 +21,7 @@ const NavMenu = () => {
   });
 
   const containerStyle = css({
-    display: "grid",
+    display: isDeepPath ? "none" : "grid",
     gridTemplateColumns: "1fr 1fr",
     // borderTop: "solid 1px #c0c0c0",
     width: "100%",

@@ -3,13 +3,14 @@
 import { css } from "@emotion/react";
 import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 
-const TopBar = () => {
-  const [isDeepPath, setIsDeepPath] = useState(false);
-  const location = useLocation();
+type Props = {
+  isDeepPath: boolean;
+};
+
+const TopBar: React.FC<Props> = ({ isDeepPath }) => {
   const navigate = useNavigate();
   const { scrollY } = useWindowScrollPositions();
 
@@ -57,12 +58,6 @@ const TopBar = () => {
       borderRadius: "100%",
     },
   });
-
-  useEffect(() => {
-    console.log(location);
-    if (location.pathname.match(/\/pokemon\//)) setIsDeepPath(true);
-    else setIsDeepPath(false);
-  }, [location]);
 
   const handleBack = () => {
     navigate(-1);
