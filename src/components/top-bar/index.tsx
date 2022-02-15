@@ -41,7 +41,7 @@ const TopBar = () => {
 
   const heartIconStyle = css({
     color: "black",
-    opacity: 0.7,
+    opacity: 0.4,
   });
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const TopBar = () => {
     <div css={baseStyle}>
       <p css={containerStyle}>
         <Icon icon={chevronLeft} css={iconStyle} />
-        <span css={textStyle}>Pokémon Apps</span>
+        <span css={textStyle}>Pokédex</span>
         <Icon icon={heartFilled} css={[iconStyle, heartIconStyle]} />
       </p>
     </div>
