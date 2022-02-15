@@ -7,7 +7,7 @@ const Routes = () => {
   return (
     <AppRoutes>
       <Route path="/" element={<PokemonList />} />
-      <Route path="/pokemon/:id" element={<PokemonDetail />} />
+      <Route path="/pokemon/:id-:name" element={<PokemonDetail />} />
       <Route path="/my-pokemon" element={<MyPokemonList />} />
     </AppRoutes>
   );

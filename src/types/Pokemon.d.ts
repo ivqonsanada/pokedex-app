@@ -1,3 +1,5 @@
+import { IconifyIcon } from "@iconify/react";
+
 namespace Pokemon {
   type BaseList = {
     count: number;
@@ -10,7 +12,7 @@ namespace Pokemon {
 
   type BaseName = {
     id?: number;
-    url: string;
+    url?: string;
     name: string;
     image?: string;
   };
@@ -33,5 +35,12 @@ namespace Pokemon {
     image: string;
     artwork: string;
     dreamworld: string;
+  };
+
+  type Type = {
+    slot?: number;
+    type: BaseName;
+    color: string;
+    icon?: IconifyIcon;
   };
 }

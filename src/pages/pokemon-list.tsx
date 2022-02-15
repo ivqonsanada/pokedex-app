@@ -13,8 +13,6 @@ const PokemonList = () => {
     variables: gqlVariables,
   });
 
-  // console.log(data);
-
   return (
     <Container>
       <PokemonCardList data={data?.pokemons} />

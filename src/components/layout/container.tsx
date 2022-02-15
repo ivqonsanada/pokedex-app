@@ -15,6 +15,7 @@ const Container: React.FC = ({ children }) => {
     padding: "64px 0 96px",
     minHeight: "100vh",
     backgroundColor: "rgb(15 23 42)",
+    overflowX: "hidden",
   });
 
   useEffect(() => {

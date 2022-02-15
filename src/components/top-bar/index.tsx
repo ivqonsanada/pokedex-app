@@ -3,7 +3,7 @@
 import { css } from "@emotion/react";
 import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 
 type Props = {
@@ -13,6 +13,7 @@ type Props = {
 const TopBar: React.FC<Props> = ({ isDeepPath }) => {
   const navigate = useNavigate();
   const { scrollY } = useWindowScrollPositions();
+  const params = useParams();
 
   const baseStyle = css({
     position: "fixed",
@@ -63,6 +64,8 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     navigate(-1);
   };
 
+  const title = params.id ? "#00" + params.id : "Pokédex";
+
   return (
     <div css={baseStyle}>
       <p css={containerStyle}>
@@ -75,7 +78,7 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
         ) : (
           <span css={emptyIconStyle}></span>
         )}
-        <span css={textStyle}>Pokédex</span>
+        <span css={textStyle}>{title}</span>
         <span css={emptyIconStyle}></span>
       </p>
     </div>
