@@ -1,10 +1,13 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { pokemonListData } from "data/pokemon";
 import PokemonCardItem from "./pokemon-card-item";
 
-const PokemonCardList = () => {
+type Props = {
+  data?: Pokemon.PokemonList;
+};
+
+const PokemonCardList: React.FC<Props> = ({ data }) => {
   const containerStyle = css({
     display: "grid",
     gridTemplateColumns: "repeat( auto-fit, minmax(160px, 1fr))",
@@ -12,9 +15,11 @@ const PokemonCardList = () => {
     gap: "64px 16px",
   });
 
+  const results = data?.results || [];
+
   return (
     <div css={containerStyle}>
-      {pokemonListData.results.map((item) => {
+      {results.map((item: Pokemon.PokemonItem) => {
         return <PokemonCardItem key={item.id} {...item} />;
       })}
     </div>
