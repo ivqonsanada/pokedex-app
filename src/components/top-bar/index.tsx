@@ -23,13 +23,14 @@ const TopBar = () => {
 
   const containerStyle = css({
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: scrollY === 0 ? "rgb(15 23 42)" : "rgb(51 65 85)",
     opacity: 1,
-    padding: "8px 0",
+    padding: "8px 24px",
     width: "100%",
     maxWidth: "414px",
+    height: 64,
     margin: 0,
   });
 
@@ -42,12 +43,20 @@ const TopBar = () => {
     width: "1.5em",
     height: "1.5em",
     padding: "0.75em",
-    // position: "absolute",
     top: 0,
+  });
+
+  const emptyIconStyle = css({
+    width: "3em",
+    height: "3em",
   });
 
   const backIconStyle = css({
     cursor: "pointer",
+    ":hover": {
+      backgroundColor: "rgb(100 116 139)",
+      borderRadius: "100%",
+    },
   });
 
   //   const heartIconStyle = css({
@@ -76,11 +85,11 @@ const TopBar = () => {
             onClick={handleBack}
           />
         ) : (
-          <span css={iconStyle}></span>
+          <span css={emptyIconStyle}></span>
         )}
         <span css={textStyle}>Pokédex</span>
         {/* <Icon icon={heartFilled} css={[iconStyle, heartIconStyle]} /> */}
-        <span css={iconStyle}></span>
+        <span css={emptyIconStyle}></span>
       </p>
     </div>
   );
