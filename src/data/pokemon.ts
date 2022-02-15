@@ -22,7 +22,7 @@ const pokemonListData: Pokemon.BaseList = {
     {
       id: 3,
       url: "https://pokeapi.co/api/v2/pokemon/3/",
-      name: "venusaur",
+      name: "bulbasaur",
       image:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
     },

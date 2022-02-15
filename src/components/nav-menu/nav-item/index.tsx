@@ -23,7 +23,6 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
     justifyContent: "center",
     alignItems: "center",
     padding: "36px 0 16px",
-    margin: "0",
     "* + *": {
       marginTop: "4px",
     },

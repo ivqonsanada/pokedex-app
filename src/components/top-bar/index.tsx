@@ -19,6 +19,7 @@ const TopBar = () => {
     top: 0,
     width: "100%",
     maxWidth: "414px",
+    zIndex: "100",
   });
 
   const containerStyle = css({
@@ -31,7 +32,6 @@ const TopBar = () => {
     width: "100%",
     maxWidth: "414px",
     height: 64,
-    margin: 0,
   });
 
   const textStyle = css({

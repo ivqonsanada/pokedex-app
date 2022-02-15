@@ -6,6 +6,8 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -25,10 +27,6 @@ code {
 a {
   color: white;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 svg {
