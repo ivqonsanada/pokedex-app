@@ -20,6 +20,7 @@ const TypeItem: React.FC<Props> = ({ data }) => {
     padding: "8px 16px",
     borderRadius: "9999px",
     display: "flex",
+    alignItems: "center",
     textTransform: "capitalize",
     "> * + *": {
       marginLeft: 4,
