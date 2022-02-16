@@ -27,7 +27,8 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: scrollY === 0 ? "rgb(15 23 42)" : "rgb(51 65 85)",
+    backgroundColor: scrollY === 0 ? "rgb(15 23 42)" : "rgba(71, 85, 105, 0.75)",
+    backdropFilter: "blur(10px)",
     opacity: 1,
     padding: "8px 24px",
     width: "100%",
@@ -68,7 +69,6 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     if (id) {
       if (id < 10) return "#000" + id;
       if (id < 100) return "#00" + id;
-      if (id < 1000) return "#0" + id;
       else return "#" + id;
     } else return "#????";
   };

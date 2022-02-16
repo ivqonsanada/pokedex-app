@@ -26,7 +26,8 @@ const NavMenu: React.FC<Props> = ({ isDeepPath }) => {
     // borderTop: "solid 1px #c0c0c0",
     width: "100%",
     maxWidth: "414px",
-    backgroundColor: "rgb(71 85 105)",
+    backgroundColor: "rgba(71, 85, 105, 0.75)",
+    backdropFilter: "blur(10px)",
   });
 
   const items = [

@@ -29,8 +29,9 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
   });
 
   const activeStyle = css({
-    backgroundColor: "rgb(51 65 85)",
-    // fontWeight: "bold",
+    backgroundColor: "rgba(51, 65, 85, 0.75)",
+    backdropFilter: "blur(2px)",
+    fontWeight: "bold",
   });
 
   const iconStyle = css({
@@ -43,17 +44,16 @@ const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
 
   const activeIconStyle = css({
     transform: "translateY(-40%) scale(1.2)",
-    backgroundColor: "rgb(51 65 85)",
+    backgroundColor: "rgba(51, 65, 85, 0.75)",
+    backdropFilter: "blur(2px)",
     borderRadius: "100%",
   });
-
-  const nameStyle = css({});
 
   return (
     <Link to={path} css={[linkStyle, isActive && activeStyle]}>
       <p css={containerStyle}>
         <Icon icon={icon} css={[iconStyle, isActive && activeIconStyle]} />
-        <span css={nameStyle}>{name}</span>
+        <span>{name}</span>
       </p>
     </Link>
   );
