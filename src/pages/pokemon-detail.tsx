@@ -3,6 +3,7 @@
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
 import Container from "components/layout/container";
+import PokemonDetailAbout from "components/pokemon-detail/about";
 import MoveList from "components/pokemon-detail/move-list";
 import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
@@ -23,12 +24,17 @@ const PokemonDetail = () => {
   console.log(data);
 
   const pokemon = {
-    name: data?.pokemon?.name || "",
+    name: params.name || "",
     sprite: data?.pokemon?.sprites?.front_default || "",
     spriteAnimated: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${params.id}.gif`,
     types: data?.pokemon?.types || [],
     moves: data?.pokemon?.moves || [],
     stats: data?.pokemon?.stats || [],
+    about: {
+      height: data?.pokemon?.height,
+      weight: data?.pokemon?.weight,
+      abilities: data?.pokemon?.abilities || [],
+    },
   };
 
   const containerStyle = css({
@@ -69,6 +75,7 @@ const PokemonDetail = () => {
         />
         <p css={nameStyle}>{pokemon.name}</p>
         <TypeList data={pokemon.types} />
+        <PokemonDetailAbout data={pokemon.about} />
         <StatList data={pokemon.stats} />
         <MoveList data={pokemon.moves} />
       </div>

@@ -19,7 +19,7 @@ const StatItem: React.FC<Props> = ({ data, isHighest }) => {
       color: "rgb(148 163 184)",
     },
     "> p:last-of-type": {
-      width: "6ch",
+      width: "5ch",
       textAlign: "right",
       fontWeight: "bold",
     },
