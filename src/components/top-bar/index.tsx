@@ -64,7 +64,16 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     navigate(-1);
   };
 
-  const title = params.id ? "#00" + params.id : "Pokédex";
+  const formatId = (id: number | string) => {
+    if (id) {
+      if (id < 10) return "#000" + id;
+      if (id < 100) return "#00" + id;
+      if (id < 1000) return "#0" + id;
+      else return "#" + id;
+    } else return "#????";
+  };
+
+  const title = params.id ? formatId(params.id) : "Pokédex";
 
   return (
     <div css={baseStyle}>
