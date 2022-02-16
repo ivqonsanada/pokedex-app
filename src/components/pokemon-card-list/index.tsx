@@ -13,7 +13,7 @@ const PokemonCardList: React.FC<Props> = ({ data }) => {
     display: "grid",
     gridTemplateColumns: "repeat( auto-fit, minmax(160px, 1fr))",
     paddingTop: "64px",
-    gap: "64px 16px",
+    gap: "72px 16px",
   });
 
   const results = data?.results || [];

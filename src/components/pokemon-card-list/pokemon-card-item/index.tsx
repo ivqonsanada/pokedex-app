@@ -1,13 +1,17 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+import { useHover } from "hooks/useHover";
 import { Link } from "react-router-dom";
 import { Pokemon } from "types/Pokemon";
 
 const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
+  const [hoverRef, isHovered] = useHover<HTMLDivElement>();
+
   const containerStyle = css({
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     backgroundColor: "rgb(30 41 59)",
     padding: "0 0 24px",
     textAlign: "center",
@@ -16,11 +20,14 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
 
   const imageStyle = css({
     marginTop: "-35%",
+    width: "100%",
+    objectFit: "contain",
+    zIndex: 1,
   });
 
   const idStyle = css({
     marginTop: "-1em",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "white",
     opacity: "0.6",
   });
@@ -45,19 +52,40 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
     },
   });
 
+  const formatId = () => {
+    if (id) {
+      if (id < 10) return "#000" + id;
+      if (id < 100) return "#00" + id;
+      if (id < 1000) return "#0" + id;
+      else return "#" + id;
+    } else return "#????";
+  };
+
   const path = `/pokemon/${id}-${name}`;
   const pokemonName = name?.[0]?.toUpperCase() + name?.slice(1) || "";
+  const sprite = isHovered
+    ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
+    : image;
+  const idNum = formatId();
 
   return (
     <Link to={path}>
-      <div css={containerStyle}>
-        <img css={imageStyle} src={image} alt={name + " sprite"} />
-        <p css={idStyle}>#00{id}</p>
-        <p css={nameStyle}>{pokemonName}</p>
+      <div css={containerStyle} ref={hoverRef}>
+        <img
+          css={imageStyle}
+          width={200}
+          height={200}
+          src={sprite}
+          alt={name + " sprite"}
+        />
         <div>
-          <p css={ownedContainerStyle}>
-            <span>0</span> <span>Owned</span>
-          </p>
+          <p css={idStyle}>{idNum}</p>
+          <p css={nameStyle}>{pokemonName}</p>
+          <div>
+            <p css={ownedContainerStyle}>
+              <span>0</span> <span>Owned</span>
+            </p>
+          </div>
         </div>
       </div>
     </Link>
