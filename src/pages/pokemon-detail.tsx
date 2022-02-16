@@ -22,7 +22,7 @@ const PokemonDetail = () => {
   console.log(data);
 
   const pokemon = {
-    name: data?.pokemon?.name?.[0].toUpperCase() + data?.pokemon?.name?.slice(1) || "",
+    name: data?.pokemon?.name || "",
     sprite: data?.pokemon?.sprites?.front_default || "",
     spriteAnimated: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${params.id}.gif`,
     types: data?.pokemon?.types,
@@ -46,6 +46,7 @@ const PokemonDetail = () => {
     fontWeight: "bold",
     fontSize: "2.4em",
     textAlign: "center",
+    textTransform: "capitalize",
   });
 
   const handleImageError = (e: any) => {

@@ -10,7 +10,6 @@ type Props = {
 };
 
 const TypeItem: React.FC<Props> = ({ data }) => {
-  const name = data.type.name.charAt(0).toUpperCase() + data.type.name.slice(1);
   const type = POKEMON_TYPES.find((e) => e.type.name === data.type.name) || null;
 
   const typeStyle = css({
@@ -24,12 +23,13 @@ const TypeItem: React.FC<Props> = ({ data }) => {
     "* + *": {
       marginLeft: 4,
     },
+    textTransform: "capitalize",
   });
 
   return (
     <p css={typeStyle}>
       {type?.icon && <Icon icon={type.icon} />}
-      <span>{name}</span>
+      <span>{data.type.name}</span>
     </p>
   );
 };

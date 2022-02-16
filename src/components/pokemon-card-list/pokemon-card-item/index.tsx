@@ -27,7 +27,6 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
 
   const idStyle = css({
     marginTop: "-1em",
-    // fontWeight: "bold",
     color: "white",
     opacity: "0.6",
   });
@@ -35,6 +34,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
   const nameStyle = css({
     fontWeight: "bold",
     fontSize: "1.5em",
+    textTransform: "capitalize",
   });
 
   const ownedContainerStyle = css({
@@ -61,7 +61,6 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
   };
 
   const path = `/pokemon/${id}-${name}`;
-  const pokemonName = name?.[0]?.toUpperCase() + name?.slice(1) || "";
   const sprite = isHovered
     ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
     : image;
@@ -79,7 +78,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
         />
         <div>
           <p css={idStyle}>{idNum}</p>
-          <p css={nameStyle}>{pokemonName}</p>
+          <p css={nameStyle}>{name}</p>
           <div>
             <p css={ownedContainerStyle}>
               <span>0</span> <span>Owned</span>
