@@ -20,10 +20,10 @@ const TypeItem: React.FC<Props> = ({ data }) => {
     padding: "8px 16px",
     borderRadius: "9999px",
     display: "flex",
-    "* + *": {
+    textTransform: "capitalize",
+    "> * + *": {
       marginLeft: 4,
     },
-    textTransform: "capitalize",
   });
 
   return (

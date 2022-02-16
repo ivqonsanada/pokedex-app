@@ -14,9 +14,6 @@ const MoveItem: React.FC<Props> = ({ data }) => {
     padding: "8px 16px",
     borderRadius: "9999px",
     display: "flex",
-    "* + *": {
-      marginLeft: 4,
-    },
   });
 
   return (

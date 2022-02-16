@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
 import Container from "components/layout/container";
 import MoveList from "components/pokemon-detail/move-list";
+import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
 import { useParams } from "react-router";
@@ -25,8 +26,9 @@ const PokemonDetail = () => {
     name: data?.pokemon?.name || "",
     sprite: data?.pokemon?.sprites?.front_default || "",
     spriteAnimated: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${params.id}.gif`,
-    types: data?.pokemon?.types,
-    moves: data?.pokemon?.moves,
+    types: data?.pokemon?.types || [],
+    moves: data?.pokemon?.moves || [],
+    stats: data?.pokemon?.stats || [],
   };
 
   const containerStyle = css({
@@ -62,9 +64,12 @@ const PokemonDetail = () => {
           src={pokemon.spriteAnimated}
           alt={`${pokemon.name} sprite`}
           onError={handleImageError}
+          width={224}
+          height={224}
         />
         <p css={nameStyle}>{pokemon.name}</p>
         <TypeList data={pokemon.types} />
+        <StatList data={pokemon.stats} />
         <MoveList data={pokemon.moves} />
       </div>
     </Container>

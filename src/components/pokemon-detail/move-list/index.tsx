@@ -19,7 +19,7 @@ const MoveList: React.FC<Props> = ({ data }) => {
   return (
     <div css={containerStyle}>
       {data?.map((e: any, index: number) => {
-        return <MoveItem key={e.index} data={e} />;
+        return <MoveItem key={index} data={e} />;
       })}
     </div>
   );
