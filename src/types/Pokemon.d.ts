@@ -1,6 +1,6 @@
 import { IconifyIcon } from "@iconify/react";
 
-namespace Pokemon {
+declare namespace Pokemon {
   type BaseList = {
     count: number;
     next?: string | null;

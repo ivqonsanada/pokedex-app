@@ -16,7 +16,7 @@ const StatItem: React.FC<Props> = ({ data, isHighest }) => {
     "> p:first-of-type": {
       width: "16ch",
       textTransform: "capitalize",
-      color: "#c8c8c8",
+      color: "rgb(148 163 184)",
     },
     "> p:last-of-type": {
       width: "6ch",
@@ -31,14 +31,14 @@ const StatItem: React.FC<Props> = ({ data, isHighest }) => {
   const rangeContainerStyle = css({
     marginTop: "auto",
     marginBottom: "auto",
-    background: "#434949",
+    background: "rgb(51 65 85)",
     height: "0.6em",
     width: "75%",
     borderRadius: "1em",
   });
 
   const rangeStyle = css({
-    backgroundColor: isHighest ? "#2db587" : "#c8c8c8",
+    backgroundColor: isHighest ? "#2db587" : "rgb(203 213 225)",
     height: "100%",
     width: rangePercentage,
     borderRadius: "999px",

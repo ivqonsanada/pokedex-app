@@ -14,7 +14,7 @@ type Props = {
 const NavItem: React.FC<Props> = ({ icon, name, path, isActive }) => {
   const linkStyle = css({
     textDecoration: "none",
-    color: "white",
+    color: "rgb(241 245 249)",
   });
 
   const containerStyle = css({

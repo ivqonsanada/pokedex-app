@@ -8,9 +8,10 @@ type Props = {
 
 const MoveItem: React.FC<Props> = ({ data }) => {
   const typeStyle = css({
-    borderColor: "white",
+    borderColor: "rgb(100 116 139)",
     borderWidth: "1px",
     borderStyle: "solid",
+    color: "rgb(203 213 225)",
     padding: "8px 16px",
     borderRadius: "9999px",
     display: "flex",

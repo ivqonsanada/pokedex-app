@@ -27,7 +27,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
 
   const idStyle = css({
     marginTop: "-1em",
-    color: "white",
+    color: "rgb(203 213 225)",
     opacity: "0.6",
   });
 
@@ -49,6 +49,10 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
     "span:first-of-type": {
       fontWeight: "bold",
       fontSize: "1.2em",
+      color: "rgb(203 213 225)",
+    },
+    "span:last-of-type": {
+      color: "rgb(148 163 184)",
     },
   });
 
