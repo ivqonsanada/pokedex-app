@@ -21,6 +21,12 @@ const Container: React.FC = ({ children }) => {
   useEffect(() => {
     if (location.pathname.match(/\/pokemon\//)) setIsDeepPath(true);
     else setIsDeepPath(false);
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [location]);
 
   return (
