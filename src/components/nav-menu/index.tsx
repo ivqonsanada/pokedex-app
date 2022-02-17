@@ -23,7 +23,6 @@ const NavMenu: React.FC<Props> = ({ isDeepPath }) => {
   const containerStyle = css({
     display: isDeepPath ? "none" : "grid",
     gridTemplateColumns: "1fr 1fr",
-    // borderTop: "solid 1px #c0c0c0",
     width: "100%",
     maxWidth: "414px",
     backgroundColor: "rgba(71, 85, 105, 0.65)",

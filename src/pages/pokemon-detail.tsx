@@ -109,7 +109,7 @@ const PokemonDetail = () => {
         {!loading && (
           <CatchButton data={{}} handleClick={handleCatch} isCatching={isCatching} />
         )}
-        {showModal && <CatchModal closeModal={handleCloseModal} />}
+        {showModal && <CatchModal data={pokemon} closeModal={handleCloseModal} />}
 
         {!loading && (
           <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
