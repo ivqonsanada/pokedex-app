@@ -1,5 +1,5 @@
 import { spin } from "./spin";
 import { bounce } from "./bounce";
-import { catchPokemon } from "./catch-pokemon";
+import { throwPokeBall } from "./throw-pokeball";
 
-export { spin, bounce, catchPokemon };
+export { spin, bounce, throwPokeBall };

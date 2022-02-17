@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
-import { css, keyframes } from "@emotion/react";
-import { bounce } from "animations";
+import { css } from "@emotion/react";
+import { bounce, throwPokeBall } from "animations";
 import { UseWindowSize } from "hooks/useWindowSize";
 
 type Props = {
@@ -40,26 +40,10 @@ const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatchMode }) => {
     zIndex: 100,
   });
 
-  const catchPokemon = keyframes`
-    from {
-       
-        transform: translate3d(0,0,0), rotate(0);
-    }
-
-    30% {
-        transform: translate3d(-20%,-${height / 3}px,0) rotate(720deg) scale(0.8);
-    }
-
-    to {
-        transform: translate3d(0,-${height / 2}px,0) rotate(1440deg) scale(0.6);
-    }
-  `;
-
   const catchBallStyle = css({
     position: "fixed",
     bottom: "5%",
-    animationDelay: "5s",
-    animation: `${catchPokemon} 0.8s linear forwards`,
+    animation: `1.6s ease-out 0.3s 1 forwards ${throwPokeBall(height)}`,
     "> img": {
       userSelect: "none",
     },
@@ -71,7 +55,7 @@ const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatchMode }) => {
 
   return (
     <>
-      <button css={[buttonStyle, isCatchMode && invisible]} onClick={handleClick}>
+      <button css={[buttonStyle]} onClick={handleClick}>
         <img
           src="/pokeball.svg"
           alt="Pokeball"
