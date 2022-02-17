@@ -11,7 +11,7 @@ type Props = {
 const PokemonCardList: React.FC<Props> = ({ data }) => {
   const containerStyle = css({
     display: "grid",
-    gridTemplateColumns: "repeat( auto-fit, minmax(160px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
     paddingTop: "64px",
     gap: "72px 16px",
   });

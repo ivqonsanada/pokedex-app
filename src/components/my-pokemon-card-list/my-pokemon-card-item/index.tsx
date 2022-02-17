@@ -10,9 +10,16 @@ type Props = {
   name: string;
   sprite: string;
   nickname: string;
+  handleRelease: (e: any, nickname: string) => void;
 };
 
-const MyPokemonCardItem: React.FC<Props> = ({ id, name, sprite, nickname }) => {
+const MyPokemonCardItem: React.FC<Props> = ({
+  id,
+  name,
+  sprite,
+  nickname,
+  handleRelease,
+}) => {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
 
   const containerStyle = css({
@@ -54,7 +61,7 @@ const MyPokemonCardItem: React.FC<Props> = ({ id, name, sprite, nickname }) => {
     border: "solid 2px transparent",
     display: "flex",
     margin: "24px auto 0",
-    padding: "12px 24px",
+    padding: "8px 24px",
     color: "rgb(226 232 240)",
     fontWeight: "bold",
     borderRadius: "999px",
@@ -78,11 +85,6 @@ const MyPokemonCardItem: React.FC<Props> = ({ id, name, sprite, nickname }) => {
     : sprite;
   const idNum = formatId();
 
-  const handleRelease = (e: any) => {
-    e.preventDefault();
-    console.log("asdfasdf");
-  };
-
   return (
     <Link to={path}>
       <div css={containerStyle} ref={hoverRef}>
@@ -99,7 +101,7 @@ const MyPokemonCardItem: React.FC<Props> = ({ id, name, sprite, nickname }) => {
             <p css={nameStyle}>{name}</p>
             <p css={nickNameStyle}>({nickname})</p>
           </div>
-          <button css={buttonStyle} onClick={handleRelease}>
+          <button css={buttonStyle} onClick={(e) => handleRelease(e, nickname)}>
             Release
           </button>
         </div>
