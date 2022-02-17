@@ -31,7 +31,7 @@ const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
     borderRadius: "999px",
     fontWeight: "bold",
     cursor: "pointer",
-    transition: "0.2s ease",
+    transition: "0.4s ease",
     "> span": {
       fontSize: "1.4em",
       zIndex: "10",
@@ -51,7 +51,8 @@ const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
   const catchBallStyle = css({
     position: "fixed",
     bottom: "5%",
-    animation: `1s ease-out 0.3s 1 forwards ${throwPokeBall(height)}`,
+    zIndex: 2,
+    animation: `1s ease-out 0.4s 1 forwards ${throwPokeBall(height)}`,
   });
 
   const hidden = css({ display: "none" });
