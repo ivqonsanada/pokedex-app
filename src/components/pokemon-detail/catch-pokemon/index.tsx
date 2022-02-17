@@ -7,10 +7,10 @@ import { UseWindowSize } from "hooks/useWindowSize";
 type Props = {
   data: any;
   handleClick: () => void;
-  isCatchMode: boolean;
+  isCatching: boolean;
 };
 
-const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatchMode }) => {
+const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatching }) => {
   const size = UseWindowSize();
   const height = size.height ? size.height - 5 : 0;
 
@@ -43,11 +43,7 @@ const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatchMode }) => {
   const catchBallStyle = css({
     position: "fixed",
     bottom: "5%",
-    animation: `1.6s ease-out 0.3s 1 forwards ${throwPokeBall(height)}`,
-    "> img": {
-      userSelect: "none",
-    },
-    cursor: "grab",
+    animation: `1s ease-out 0.3s 1 forwards ${throwPokeBall(height)}`,
   });
 
   const hidden = css({ display: "none" });
@@ -66,7 +62,7 @@ const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatchMode }) => {
         <span>Catch</span>
       </button>
 
-      <div css={[catchBallStyle, !isCatchMode && hidden]}>
+      <div css={[catchBallStyle, !isCatching && hidden]}>
         <img src="/pokeball.svg" alt="Pokeball" width={180} height={180} />
       </div>
     </>

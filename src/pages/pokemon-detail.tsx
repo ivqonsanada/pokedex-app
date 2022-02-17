@@ -14,7 +14,7 @@ import { useParams } from "react-router";
 
 const PokemonDetail = () => {
   const params = useParams();
-  const [isCatchMode, setIsCatchMode] = useState(false);
+  const [isCatching, setIsCatching] = useState(false);
 
   const gqlVariables = {
     name: params.name,
@@ -72,7 +72,9 @@ const PokemonDetail = () => {
   const handleCatch = () => {
     console.log("Catch");
 
-    setIsCatchMode(!isCatchMode);
+    setIsCatching(!isCatching);
+
+    setTimeout(() => {}, 1500);
   };
 
   return (
@@ -86,13 +88,13 @@ const PokemonDetail = () => {
           width={224}
           height={224}
         />
-        <div css={[spacingY, transition, isCatchMode && fadeOutEffect]}>
+        <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
           <p css={nameStyle}>{pokemon.name}</p>
           <TypeList data={pokemon.types} />
         </div>
-        <CatchPokemon data={{}} handleClick={handleCatch} isCatchMode={isCatchMode} />
+        <CatchPokemon data={{}} handleClick={handleCatch} isCatching={isCatching} />
 
-        <div css={[spacingY, transition, isCatchMode && fadeOutEffect]}>
+        <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
           <PokemonDetailAbout data={pokemon.about} />
           <StatList data={pokemon.stats} />
           <MoveList data={pokemon.moves} />

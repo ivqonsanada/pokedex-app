@@ -31,6 +31,6 @@ export const throwPokeBall = (height: number) => keyframes`
     }
 
     to {
-        transform: translate3d(4px,-${height / 2}px,0) rotate(1444deg) scale(0.4);
+        transform: translate3d(4px,-${height / 2 - 4}px,0) rotate(1480deg) scale(0.4);
     }
   `;
