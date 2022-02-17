@@ -20,8 +20,10 @@ const StatItem: React.FC<Props> = ({ data, isHighest }) => {
     },
     "> p:last-of-type": {
       width: "5ch",
-      textAlign: "right",
       fontWeight: "bold",
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "center",
     },
     "> * + *": {
       marginLeft: "4ch",
@@ -33,7 +35,7 @@ const StatItem: React.FC<Props> = ({ data, isHighest }) => {
     marginBottom: "auto",
     background: "rgb(51 65 85)",
     height: "0.6em",
-    width: "75%",
+    width: "72%",
     borderRadius: "1em",
   });
 

@@ -1,17 +1,20 @@
 /** @jsxImportSource @emotion/react */
 
 import { useQuery } from "@apollo/client";
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import Container from "components/layout/container";
 import PokemonDetailAbout from "components/pokemon-detail/about";
+import CatchPokemon from "components/pokemon-detail/catch-pokemon";
 import MoveList from "components/pokemon-detail/move-list";
 import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
+import { useState } from "react";
 import { useParams } from "react-router";
 
 const PokemonDetail = () => {
   const params = useParams();
+  const [isCatchMode, setIsCatchMode] = useState(false);
 
   const gqlVariables = {
     name: params.name,
@@ -40,7 +43,7 @@ const PokemonDetail = () => {
   const containerStyle = css({
     display: "flex",
     flexDirection: "column",
-    gap: "16px",
+    gap: "24px",
     alignItems: "center",
     marginTop: "24px",
   });
@@ -57,9 +60,19 @@ const PokemonDetail = () => {
     textTransform: "capitalize",
   });
 
+  const transition = css({ transition: `0.4s ease` });
+  const fadeOutEffect = css({ opacity: 0 });
+  const spacingY = css({ "> * + *": { marginTop: "24px" } });
+
   const handleImageError = (e: any) => {
     e.target.src = pokemon.sprite;
     e.target.style.width = "100%";
+  };
+
+  const handleCatch = () => {
+    console.log("Catch");
+
+    setIsCatchMode(!isCatchMode);
   };
 
   return (
@@ -73,11 +86,17 @@ const PokemonDetail = () => {
           width={224}
           height={224}
         />
-        <p css={nameStyle}>{pokemon.name}</p>
-        <TypeList data={pokemon.types} />
-        <PokemonDetailAbout data={pokemon.about} />
-        <StatList data={pokemon.stats} />
-        <MoveList data={pokemon.moves} />
+        <div css={[spacingY, transition, isCatchMode && fadeOutEffect]}>
+          <p css={nameStyle}>{pokemon.name}</p>
+          <TypeList data={pokemon.types} />
+        </div>
+        <CatchPokemon data={{}} handleClick={handleCatch} isCatchMode={isCatchMode} />
+
+        <div css={[spacingY, transition, isCatchMode && fadeOutEffect]}>
+          <PokemonDetailAbout data={pokemon.about} />
+          <StatList data={pokemon.stats} />
+          <MoveList data={pokemon.moves} />
+        </div>
       </div>
     </Container>
   );

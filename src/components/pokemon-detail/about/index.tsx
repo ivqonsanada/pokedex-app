@@ -100,8 +100,8 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
             <Icon css={iconStyle} icon={weightOutline} />
           </div>
           <div>
-            <p css={fontBold}>
-              {weight.kg} ({weight.lb})
+            <p>
+              <span css={fontBold}>{weight.kg}</span> ({weight.lb})
             </p>
             <p css={labelStyle}>Weight</p>
           </div>
@@ -112,8 +112,8 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
             <Icon css={iconStyle} icon={ruler24Regular} />
           </div>
           <div>
-            <p css={fontBold}>
-              {height.m} ({height.inch})
+            <p>
+              <span css={fontBold}>{height.m}</span> ({height.inch})
             </p>
             <p css={labelStyle}>Height</p>
           </div>
