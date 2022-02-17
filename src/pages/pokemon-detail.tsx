@@ -83,6 +83,10 @@ const PokemonDetail = () => {
     setIsCatching(false);
   };
 
+  const loadingStyle = css({
+    color: "rgb(100 116 139)",
+  });
+
   return (
     <Container>
       <div css={containerStyle}>
@@ -100,14 +104,20 @@ const PokemonDetail = () => {
           <TypeList data={pokemon.types} />
         </div>
 
-        <CatchButton data={{}} handleClick={handleCatch} isCatching={isCatching} />
+        {loading && <p css={loadingStyle}>Loading...</p>}
+
+        {!loading && (
+          <CatchButton data={{}} handleClick={handleCatch} isCatching={isCatching} />
+        )}
         {showModal && <CatchModal closeModal={handleCloseModal} />}
 
-        <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
-          <PokemonDetailAbout data={pokemon.about} />
-          <StatList data={pokemon.stats} />
-          <MoveList data={pokemon.moves} />
-        </div>
+        {!loading && (
+          <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
+            <PokemonDetailAbout data={pokemon.about} />
+            <StatList data={pokemon.stats} />
+            <MoveList data={pokemon.moves} />
+          </div>
+        )}
       </div>
     </Container>
   );
