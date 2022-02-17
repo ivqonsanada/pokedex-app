@@ -12,6 +12,7 @@ import TypeList from "components/pokemon-detail/type-list";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
 import { useState } from "react";
 import { useParams } from "react-router";
+import staticCDN from "convert-staticzap";
 
 const PokemonDetail = () => {
   const params = useParams();
@@ -65,7 +66,7 @@ const PokemonDetail = () => {
   const spacingY = css({ "> * + *": { marginTop: "24px" } });
 
   const handleImageError = (e: any) => {
-    e.target.src = pokemon.sprite;
+    e.target.src = staticCDN(pokemon.sprite) || pokemon.sprite;
     e.target.style.width = "100%";
   };
 
@@ -87,7 +88,7 @@ const PokemonDetail = () => {
       <div css={containerStyle}>
         <img
           css={[spriteStyle, isCatching && fadeOutEffect]}
-          src={pokemon.spriteAnimated}
+          src={staticCDN(pokemon.spriteAnimated) || pokemon.spriteAnimated}
           alt={`${pokemon.name} sprite`}
           onError={handleImageError}
           width={224}

@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import { pokeballCatch } from "animations";
+import staticCDN from "convert-staticzap";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
@@ -87,7 +88,7 @@ const CatchModal: React.FC<Props> = ({ closeModal }) => {
       {state === "run away" && (
         <>
           <img
-            src={spriteRunAway}
+            src={staticCDN(spriteRunAway) || spriteRunAway}
             alt={params.name + " run away sprite"}
             css={pokemonStyle}
             width={180}

@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 import { useHover } from "hooks/useHover";
 import { Link } from "react-router-dom";
 import { Pokemon } from "types/Pokemon";
+import staticCDN from "convert-staticzap";
 
 const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
@@ -77,7 +78,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
           css={imageStyle}
           width={200}
           height={200}
-          src={sprite}
+          src={staticCDN(sprite) || sprite}
           alt={name + " sprite"}
         />
         <div>
