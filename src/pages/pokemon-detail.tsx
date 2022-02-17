@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
 import { useQuery } from "@apollo/client";
-import { css, keyframes } from "@emotion/react";
+import { css } from "@emotion/react";
 import Container from "components/layout/container";
+import PokemonCatchModal from "components/pokemon-catch-modal";
 import PokemonDetailAbout from "components/pokemon-detail/about";
 import CatchPokemon from "components/pokemon-detail/catch-pokemon";
 import MoveList from "components/pokemon-detail/move-list";
@@ -15,11 +16,9 @@ import { useParams } from "react-router";
 const PokemonDetail = () => {
   const params = useParams();
   const [isCatching, setIsCatching] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const gqlVariables = {
-    name: params.name,
-  };
-
+  const gqlVariables = { name: params.name };
   const { loading, error, data } = useQuery(GET_POKEMON_BY_NAME, {
     variables: gqlVariables,
   });
@@ -72,9 +71,16 @@ const PokemonDetail = () => {
   const handleCatch = () => {
     console.log("Catch");
 
-    setIsCatching(!isCatching);
+    setIsCatching(true);
 
-    setTimeout(() => {}, 1500);
+    setTimeout(() => {
+      setShowModal(true);
+    }, 1600);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setIsCatching(false);
   };
 
   return (
@@ -88,11 +94,14 @@ const PokemonDetail = () => {
           width={224}
           height={224}
         />
+
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
           <p css={nameStyle}>{pokemon.name}</p>
           <TypeList data={pokemon.types} />
         </div>
+
         <CatchPokemon data={{}} handleClick={handleCatch} isCatching={isCatching} />
+        {showModal && <PokemonCatchModal closeModal={handleCloseModal} />}
 
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
           <PokemonDetailAbout data={pokemon.about} />
