@@ -10,7 +10,7 @@ type Props = {
   isCatching: boolean;
 };
 
-const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatching }) => {
+const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
   const size = UseWindowSize();
   const height = size.height ? size.height - 5 : 0;
 
@@ -51,7 +51,7 @@ const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatching }) => {
 
   return (
     <>
-      <button css={[buttonStyle]} onClick={handleClick}>
+      <button css={[buttonStyle, isCatching && invisible]} onClick={handleClick}>
         <img
           src="/pokeball.svg"
           alt="Pokeball"
@@ -69,4 +69,4 @@ const CatchPokemon: React.FC<Props> = ({ data, handleClick, isCatching }) => {
   );
 };
 
-export default CatchPokemon;
+export default CatchButton;

@@ -3,9 +3,9 @@
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
 import Container from "components/layout/container";
-import PokemonCatchModal from "components/pokemon-catch-modal";
+import CatchButton from "components/pokemon-detail/catch-button";
+import CatchModal from "components/pokemon-detail/catch-modal";
 import PokemonDetailAbout from "components/pokemon-detail/about";
-import CatchPokemon from "components/pokemon-detail/catch-pokemon";
 import MoveList from "components/pokemon-detail/move-list";
 import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
@@ -69,8 +69,6 @@ const PokemonDetail = () => {
   };
 
   const handleCatch = () => {
-    console.log("Catch");
-
     setIsCatching(true);
 
     setTimeout(() => {
@@ -100,8 +98,8 @@ const PokemonDetail = () => {
           <TypeList data={pokemon.types} />
         </div>
 
-        <CatchPokemon data={{}} handleClick={handleCatch} isCatching={isCatching} />
-        {showModal && <PokemonCatchModal closeModal={handleCloseModal} />}
+        <CatchButton data={{}} handleClick={handleCatch} isCatching={isCatching} />
+        {showModal && <CatchModal closeModal={handleCloseModal} />}
 
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
           <PokemonDetailAbout data={pokemon.about} />

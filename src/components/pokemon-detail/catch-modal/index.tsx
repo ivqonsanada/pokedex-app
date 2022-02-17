@@ -9,7 +9,7 @@ type Props = {
   closeModal: () => void;
 };
 
-const PokemonCatchModal: React.FC<Props> = ({ closeModal }) => {
+const CatchModal: React.FC<Props> = ({ closeModal }) => {
   const params = useParams();
   const [state, setState] = useState("catching");
 
@@ -112,4 +112,4 @@ const PokemonCatchModal: React.FC<Props> = ({ closeModal }) => {
   );
 };
 
-export default PokemonCatchModal;
+export default CatchModal;
