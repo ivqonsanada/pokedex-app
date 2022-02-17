@@ -81,14 +81,14 @@ const CatchModal: React.FC<Props> = ({ closeModal }) => {
           <div css={pokeballStyle}>
             <img src="/pokeball.svg" alt="Pokeball" width={144} height={144} />
           </div>
-          <p>Pokeball, please do your magic!</p>
+          <p>Poké Ball, please do your magic!</p>
         </>
       )}
       {state === "run away" && (
         <>
           <img
             src={spriteRunAway}
-            alt={params.name + " run away"}
+            alt={params.name + " run away sprite"}
             css={pokemonStyle}
             width={180}
             height={180}
@@ -96,7 +96,7 @@ const CatchModal: React.FC<Props> = ({ closeModal }) => {
           <div css={spaceY}>
             <p css={fontBold}>Ouch!</p>
             <p>Seems this {params.name} doesn't like you and run away.</p>
-            <p>Lets find another one!</p>
+            <p>Lets catch another one!</p>
             <button css={buttonStyle} onClick={handleClose}>
               Close
             </button>

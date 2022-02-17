@@ -12,7 +12,14 @@ type Props = {
 
 const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
   const size = UseWindowSize();
-  const height = size.height ? size.height - 5 : 0;
+  const heights = {
+    topBar: 64,
+    sprite: 248,
+    ballPositionY: size.height ? size.height * 0.05 : 0,
+  };
+  const height = size.height
+    ? size.height - heights.sprite - heights.topBar - heights.ballPositionY
+    : 0;
 
   const buttonStyle = css({
     padding: "12px 18px",
@@ -24,6 +31,7 @@ const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
     borderRadius: "999px",
     fontWeight: "bold",
     cursor: "pointer",
+    transition: "0.2s ease",
     "> span": {
       fontSize: "1.4em",
       zIndex: "10",
@@ -47,11 +55,11 @@ const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
   });
 
   const hidden = css({ display: "none" });
-  const invisible = css({ visibility: "hidden" });
+  const transparent = css({ opacity: 0 });
 
   return (
     <>
-      <button css={[buttonStyle, isCatching && invisible]} onClick={handleClick}>
+      <button css={[buttonStyle, isCatching && transparent]} onClick={handleClick}>
         <img
           src="/pokeball.svg"
           alt="Pokeball"

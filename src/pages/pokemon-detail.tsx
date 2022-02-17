@@ -50,6 +50,7 @@ const PokemonDetail = () => {
   const spriteStyle = css({
     width: "70%",
     height: "auto",
+    transition: `0.4s ease ${isCatching ? "1s" : "0s"}`,
   });
 
   const nameStyle = css({
@@ -85,7 +86,7 @@ const PokemonDetail = () => {
     <Container>
       <div css={containerStyle}>
         <img
-          css={spriteStyle}
+          css={[spriteStyle, isCatching && fadeOutEffect]}
           src={pokemon.spriteAnimated}
           alt={`${pokemon.name} sprite`}
           onError={handleImageError}
