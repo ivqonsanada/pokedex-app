@@ -12,13 +12,7 @@ import { clientsClaim } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import {
-  StaleWhileRevalidate,
-  NetworkFirst,
-  CacheFirst,
-  NetworkOnly,
-} from "workbox-strategies";
-import { BackgroundSyncPlugin } from "workbox-background-sync";
+import { CacheFirst } from "workbox-strategies";
 import { CacheableResponsePlugin } from "workbox-cacheable-response";
 
 declare const self: ServiceWorkerGlobalScope;
@@ -69,7 +63,6 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
-
 registerRoute(
   ({ request }) => request.destination === "image",
   new CacheFirst({
