@@ -3,7 +3,7 @@
 import { css } from "@emotion/react";
 import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
 };
 
 const TopBar: React.FC<Props> = ({ isDeepPath }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { scrollY } = useWindowScrollPositions();
   const params = useParams();
@@ -62,7 +63,8 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
   });
 
   const handleBack = () => {
-    navigate(-1);
+    if (location.key !== "default") navigate(-1);
+    else navigate("/", { replace: true });
   };
 
   const formatId = (id: number | string) => {
