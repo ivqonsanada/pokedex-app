@@ -1,8 +1,9 @@
 import Container from "components/layout/container";
 import MyPokemonCardList from "components/my-pokemon-card-list";
+import { usePokemon } from "contexts/pokemon-context";
 
 const MyPokemonList = () => {
-  const myPokemons = JSON.parse(localStorage.getItem("my-pokemon")!) || [];
+  const { myPokemons } = usePokemon();
 
   return (
     <Container>

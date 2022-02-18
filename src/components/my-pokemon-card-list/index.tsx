@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+import { usePokemon } from "contexts/pokemon-context";
 import MyPokemonCardItem from "./my-pokemon-card-item";
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
 };
 
 const MyPokemonCardList: React.FC<Props> = ({ data }) => {
+  const { releasePokemon } = usePokemon();
+
   const containerStyle = css({
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
@@ -18,10 +21,7 @@ const MyPokemonCardList: React.FC<Props> = ({ data }) => {
   const handleRelease = (e: any, nickname: string) => {
     e.preventDefault();
 
-    let myPokemons = JSON.parse(localStorage.getItem("my-pokemon")!) || [];
-    const newMyPokemons = myPokemons.filter((e: any) => e.nickname !== nickname);
-
-    localStorage.setItem("my-pokemon", JSON.stringify(newMyPokemons));
+    releasePokemon(nickname);
   };
 
   return (

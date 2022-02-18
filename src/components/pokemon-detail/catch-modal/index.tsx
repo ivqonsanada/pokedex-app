@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import { pokeballCatch } from "animations";
+import { usePokemon } from "contexts/pokemon-context";
 import staticCDN from "convert-staticzap";
 import { FormEvent, MutableRefObject, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
@@ -13,6 +14,7 @@ type Props = {
 
 const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
   const params = useParams();
+  const { myPokemons, savePokemon } = usePokemon();
   const [state, setState] = useState("Catching");
   const [error, setError] = useState("");
   const nicknameInputElement = useRef() as MutableRefObject<HTMLInputElement>;
@@ -127,23 +129,17 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
       name: params.name,
       sprite: data.sprite,
       spriteAnimated: data.spriteAnimated,
-      nickname: nicknameInputElement.current.value,
     };
 
-    let myPokemons = JSON.parse(localStorage.getItem("my-pokemon")!) || [];
-    const isNicknameUsed = myPokemons.find((e: any) => e.nickname === pokemon.nickname);
+    const nickname = nicknameInputElement.current.value;
+    const isNicknameUsed = myPokemons.find((e: any) => e.nickname === nickname);
 
     if (isNicknameUsed) {
       setError("Nickname has been used. Try another one.");
       return;
     }
 
-    if (myPokemons.length > 0) {
-      myPokemons.push(pokemon);
-      localStorage.setItem("my-pokemon", JSON.stringify(myPokemons));
-    } else {
-      localStorage.setItem("my-pokemon", JSON.stringify([pokemon]));
-    }
+    savePokemon(pokemon, nickname);
 
     handleClose();
   };
