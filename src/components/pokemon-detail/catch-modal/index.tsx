@@ -27,12 +27,15 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
     alignItems: "center",
     width: "90%",
     maxWidth: "360px",
-    minHeight: "400px",
-    padding: "12px 24px",
+    padding: "18px 24px",
     borderRadius: "0.4em",
     backgroundColor: "rgb(30 41 59)",
     transition: "1s ease",
     zIndex: 101,
+    marginTop: "60px",
+    img: {
+      marginTop: "-30%",
+    },
     "> * + *": {
       marginTop: "24px",
     },
