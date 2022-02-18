@@ -5,12 +5,12 @@ import { bounce, throwPokeBall } from "animations";
 import { UseWindowSize } from "hooks/useWindowSize";
 
 type Props = {
-  data: any;
   handleClick: () => void;
   isCatching: boolean;
+  isModalOpen: boolean;
 };
 
-const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
+const CatchButton: React.FC<Props> = ({ handleClick, isCatching, isModalOpen }) => {
   const size = UseWindowSize();
   const heights = {
     topBar: 64,
@@ -71,7 +71,7 @@ const CatchButton: React.FC<Props> = ({ data, handleClick, isCatching }) => {
         <span>Catch</span>
       </button>
 
-      <div css={[catchBallStyle, !isCatching && hidden]}>
+      <div css={[catchBallStyle, (!isCatching || isModalOpen) && hidden]}>
         <img src="/pokeball.svg" alt="Pokeball" width={180} height={180} />
       </div>
     </>

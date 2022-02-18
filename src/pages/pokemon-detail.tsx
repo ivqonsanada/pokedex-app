@@ -46,6 +46,7 @@ const PokemonDetail = () => {
     gap: "24px",
     alignItems: "center",
     marginTop: "24px",
+    padding: "0 24px",
   });
 
   const spriteStyle = css({
@@ -125,15 +126,25 @@ const PokemonDetail = () => {
         {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
 
         {!loading && (
-          <CatchButton data={{}} handleClick={handleCatch} isCatching={isCatching} />
+          <CatchButton
+            handleClick={handleCatch}
+            isCatching={isCatching}
+            isModalOpen={showModal}
+          />
         )}
         {showModal && <CatchModal data={pokemon} closeModal={handleCloseModal} />}
 
         {!loading && (
           <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
-            <PokemonDetailAbout data={pokemon.about} />
-            <StatList data={pokemon.stats} />
-            <MoveList data={pokemon.moves} />
+            <div>
+              <PokemonDetailAbout data={pokemon.about} moves={pokemon.moves.length} />
+            </div>
+            <div>
+              <StatList data={pokemon.stats} />
+            </div>
+            <div>
+              <MoveList data={pokemon.moves} />
+            </div>
           </div>
         )}
       </div>
