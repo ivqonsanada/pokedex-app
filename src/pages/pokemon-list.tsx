@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+
+import { css } from "@emotion/react";
 import { useQuery } from "@apollo/client";
 import Container from "components/layout/container";
 import PokemonCardList from "components/pokemon-card-list";
@@ -13,9 +16,19 @@ const PokemonList = () => {
     variables: gqlVariables,
   });
 
+  const loadingStyle = css({
+    color: "rgb(100 116 139)",
+    height: "80vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  });
+
   return (
     <Container>
-      <PokemonCardList data={data?.pokemons} />
+      {loading && <p css={loadingStyle}>Loading...</p>}
+      {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
+      {data && <PokemonCardList data={data.pokemons} />}
     </Container>
   );
 };

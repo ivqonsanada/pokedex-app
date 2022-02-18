@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
-import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
+import { useQuery } from "@apollo/client";
 import Container from "components/layout/container";
 import CatchButton from "components/pokemon-detail/catch-button";
 import CatchModal from "components/pokemon-detail/catch-modal";
@@ -122,6 +122,7 @@ const PokemonDetail = () => {
         </div>
 
         {loading && <p css={loadingStyle}>Loading...</p>}
+        {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
 
         {!loading && (
           <CatchButton data={{}} handleClick={handleCatch} isCatching={isCatching} />
