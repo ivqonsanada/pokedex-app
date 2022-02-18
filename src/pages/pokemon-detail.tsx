@@ -24,8 +24,6 @@ const PokemonDetail = () => {
     variables: gqlVariables,
   });
 
-  console.log(data);
-
   const pokemon = {
     name: params.name || "",
     sprite: data?.pokemon?.sprites?.front_default || "",

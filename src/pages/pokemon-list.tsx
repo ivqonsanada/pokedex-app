@@ -13,11 +13,7 @@ import pokemonIcon from "@iconify/icons-simple-icons/pokemon";
 const PokemonList = () => {
   const { scrollY } = useWindowScrollPositions();
 
-  const gqlVariables = {
-    limit: 12,
-    offset: 0,
-  };
-
+  const gqlVariables = { limit: 12, offset: 0 };
   const { loading, error, data } = useQuery(GET_POKEMON_LIST, {
     variables: gqlVariables,
   });
