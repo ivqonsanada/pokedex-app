@@ -75,11 +75,12 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
     <Link to={path}>
       <div css={containerStyle} ref={hoverRef}>
         <img
+          src={staticCDN(sprite) || sprite}
           css={imageStyle}
           width={200}
           height={200}
-          src={staticCDN(sprite) || sprite}
           alt={name + " sprite"}
+          crossOrigin="anonymous"
         />
         <div>
           <p css={idStyle}>{idNum}</p>

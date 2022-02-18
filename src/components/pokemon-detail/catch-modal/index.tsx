@@ -159,10 +159,11 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
         <>
           <img
             src={staticCDN(spriteRunAway) || spriteRunAway}
-            alt={params.name + " run away sprite"}
             css={pokemonStyle}
             width={180}
             height={180}
+            alt={params.name + " run away sprite"}
+            crossOrigin="anonymous"
           />
           <div css={spaceY}>
             <p css={fontBold}>Ouch!</p>
@@ -178,10 +179,11 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
         <>
           <img
             src={staticCDN(data.spriteAnimated) || data.spriteAnimated}
-            alt={params.name + " run away sprite"}
             css={pokemonStyle}
             width={180}
             height={180}
+            alt={params.name + " sprite"}
+            crossOrigin="anonymous"
           />
           <div css={spaceY}>
             <p css={fontBold}>Gotcha!</p>

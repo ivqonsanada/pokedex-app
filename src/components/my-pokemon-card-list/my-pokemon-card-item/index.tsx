@@ -89,11 +89,12 @@ const MyPokemonCardItem: React.FC<Props> = ({
     <Link to={path}>
       <div css={containerStyle} ref={hoverRef}>
         <img
+          src={staticCDN(image) || image}
           css={imageStyle}
           width={200}
           height={200}
-          src={staticCDN(image) || image}
           alt={name + " sprite"}
+          crossOrigin="anonymous"
         />
         <div>
           <p css={idStyle}>{idNum}</p>

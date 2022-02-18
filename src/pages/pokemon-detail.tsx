@@ -107,12 +107,13 @@ const PokemonDetail = () => {
     <Container>
       <div css={containerStyle}>
         <img
-          css={[spriteStyle, isCatching && fadeOutEffect]}
           src={staticCDN(pokemon.spriteAnimated) || pokemon.spriteAnimated}
-          alt={`${pokemon.name} sprite`}
+          css={[spriteStyle, isCatching && fadeOutEffect]}
           onError={handleImageError}
           width={224}
           height={224}
+          alt={`${pokemon.name} sprite`}
+          crossOrigin="anonymous"
         />
 
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
