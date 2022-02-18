@@ -62,6 +62,15 @@ const PokemonDetail = () => {
     textTransform: "capitalize",
   });
 
+  const subHeading = css({
+    fontWeight: "bold",
+    color: "rgb(203 213 225)",
+    // fontSize: "0.9em",
+    // textAlign: "center",
+    padding: "0 4px",
+    marginBottom: "16px",
+  });
+
   const transition = css({ transition: `0.4s ease` });
   const fadeOutEffect = css({ opacity: 0 });
   const spacingY = css({ "> * + *": { marginTop: "24px" } });
@@ -137,12 +146,15 @@ const PokemonDetail = () => {
         {!loading && (
           <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
             <div>
+              <p css={subHeading}>About</p>
               <PokemonDetailAbout data={pokemon.about} moves={pokemon.moves.length} />
             </div>
             <div>
+              <p css={subHeading}>Stats</p>
               <StatList data={pokemon.stats} />
             </div>
             <div>
+              <p css={subHeading}>Moves</p>
               <MoveList data={pokemon.moves} />
             </div>
           </div>

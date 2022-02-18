@@ -12,7 +12,7 @@ const MoveList: React.FC<Props> = ({ data }) => {
   const containerStyle = css({
     display: "flex",
     gap: "8px",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     flexWrap: "wrap",
   });
 

@@ -10,9 +10,10 @@ import configureMeasurements, { mass, length } from "convert-units";
 
 type Props = {
   data: any;
+  moves: number;
 };
 
-const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
+const PokemonDetailAbout: React.FC<Props> = ({ data, moves }) => {
   const params = useParams();
   const unitFormatter = useUnit;
   const convertMass = configureMeasurements({ mass });
@@ -40,10 +41,12 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
 
   const containerStyle = css({
     width: "100%",
-    padding: "0 24px",
     color: "rgb(148 163 184)",
+    "> p": {
+      margin: "0 4px",
+    },
     "> * + *": {
-      marginTop: "24px",
+      marginTop: "12px",
     },
   });
 
@@ -54,9 +57,10 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
     display: "flex",
     justifyContent: "space-between",
     height: "100%",
-    padding: "24px",
-    borderRadius: "1em",
-    backgroundColor: "rgb(30 41 59)",
+    padding: "24px 16px",
+    borderRadius: "0.5em",
+    border: "solid 1px rgb(71 85 105)",
+    // backgroundColor: "rgb(30 41 59)",
     "> div:first-of-type, > div:last-of-type": {
       display: "flex",
       "> * + *": {
@@ -78,11 +82,12 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
   });
 
   const separatorStyle = css({
-    height: "2em",
-    width: "2px",
+    height: "1.6em",
+    width: "1px",
     borderRadius: "1em",
     backgroundColor: "rgb(51 65 85)",
     margin: "auto",
+    opacity: 0.6,
   });
 
   const listFormatter = new Intl.ListFormat("en", { style: "long", type: "conjunction" });
@@ -92,7 +97,8 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
     <div css={containerStyle}>
       <p>
         <span css={capitalize}>{params.name}</span> has {abilities.length} abilities:
-        <span> {data && listFormatter.format(abilities)}</span>.
+        <span css={fontBold}> {data && listFormatter.format(abilities)}</span>. It also
+        has {moves} moves to use in a battle.
       </p>
       <div css={aboutContainerStyle}>
         <div>
@@ -109,13 +115,13 @@ const PokemonDetailAbout: React.FC<Props> = ({ data }) => {
         <div css={separatorStyle}></div>
         <div>
           <div>
-            <Icon css={iconStyle} icon={ruler24Regular} />
-          </div>
-          <div>
             <p>
-              <span css={fontBold}>{height.m}</span> ({height.inch})
+              <span css={fontBold}>{height.m}</span> <span>({height.inch})</span>
             </p>
             <p css={labelStyle}>Height</p>
+          </div>
+          <div>
+            <Icon css={iconStyle} icon={ruler24Regular} />
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ const Container: React.FC = ({ children }) => {
     minHeight: "100vh",
     backgroundColor: "rgb(15 23 42)",
     overflowX: "hidden",
+    outline: "solid 1px rgb(30 41 59)",
   });
 
   useEffect(() => {
