@@ -12,7 +12,14 @@ import { clientsClaim } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { StaleWhileRevalidate } from "workbox-strategies";
+import {
+  StaleWhileRevalidate,
+  NetworkFirst,
+  CacheFirst,
+  NetworkOnly,
+} from "workbox-strategies";
+import { BackgroundSyncPlugin } from "workbox-background-sync";
+import { CacheableResponsePlugin } from "workbox-cacheable-response";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -53,22 +60,6 @@ registerRoute(
   createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html")
 );
 
-// An example runtime caching route for requests that aren't handled by the
-// precache, in this case same-origin .png requests like those from in public/
-registerRoute(
-  // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith(".png"),
-  // Customize this strategy as needed, e.g., by changing to CacheFirst.
-  new StaleWhileRevalidate({
-    cacheName: "images",
-    plugins: [
-      // Ensure that once this runtime cache reaches a maximum size the
-      // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50 }),
-    ],
-  })
-);
-
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
 self.addEventListener("message", (event) => {
@@ -78,3 +69,40 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
+registerRoute(
+  ({ url }) => url.origin === "https://graphql-pokeapi.graphcdn.app",
+  new NetworkFirst({
+    cacheName: "graphql-api-cache",
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 64,
+        maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days,
+      }),
+    ],
+  })
+);
+
+registerRoute(
+  ({ url }) => url.origin === "https://graphql-pokeapi.graphcdn.app",
+  new NetworkOnly({
+    plugins: [
+      new BackgroundSyncPlugin("graphqlQueue", {
+        maxRetentionTime: 24 * 60, // Retry for max of 24 Hours (specified in minutes)
+      }),
+    ],
+  }),
+  "POST"
+);
+
+registerRoute(
+  ({ request }) => request.destination === "image",
+  new CacheFirst({
+    cacheName: "image-cache",
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 1000,
+        maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days,
+      }),
+    ],
+  })
+);
