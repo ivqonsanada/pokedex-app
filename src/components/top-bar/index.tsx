@@ -21,7 +21,7 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     top: 0,
     width: "100%",
     maxWidth: "414px",
-    zIndex: "100",
+    zIndex: "101",
   });
 
   const containerStyle = css({
