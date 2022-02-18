@@ -21,7 +21,9 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
 
   const imageStyle = css({
     marginTop: "-35%",
-    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: isHovered ? "90%" : "100%",
     objectFit: "contain",
     zIndex: 1,
   });
@@ -36,25 +38,6 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
     fontWeight: "bold",
     fontSize: "1.5em",
     textTransform: "capitalize",
-  });
-
-  const ownedContainerStyle = css({
-    display: "inline-block",
-    backgroundColor: "rgb(51 65 85)",
-    padding: "8px 16px",
-    borderRadius: "0.25em",
-    margin: "8px 0 -16px",
-    "* + *": {
-      marginLeft: "4px",
-    },
-    "span:first-of-type": {
-      fontWeight: "bold",
-      fontSize: "1.2em",
-      color: "rgb(203 213 225)",
-    },
-    "span:last-of-type": {
-      color: "rgb(148 163 184)",
-    },
   });
 
   const formatId = () => {
@@ -85,11 +68,6 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
         <div>
           <p css={idStyle}>{idNum}</p>
           <p css={nameStyle}>{name}</p>
-          <div>
-            <p css={ownedContainerStyle}>
-              <span>0</span> <span>Owned</span>
-            </p>
-          </div>
         </div>
       </div>
     </Link>

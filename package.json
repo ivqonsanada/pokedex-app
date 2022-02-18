@@ -79,6 +79,7 @@
     "@iconify/icons-la": "^1.2.1",
     "@iconify/icons-mdi": "^1.2.1",
     "@iconify/icons-ph": "^1.2.1",
+    "@iconify/icons-simple-icons": "^1.2.1",
     "@iconify/icons-tabler": "^1.2.1",
     "@iconify/icons-wi": "^1.2.1",
     "@iconify/react": "^3.1.3",

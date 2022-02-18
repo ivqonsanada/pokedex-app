@@ -30,11 +30,12 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     alignItems: "center",
     backgroundColor: scrollY === 0 ? "rgb(15 23 42)" : "rgba(71, 85, 105, 0.75)",
     backdropFilter: "blur(10px)",
-    opacity: 1,
+    opacity: scrollY > 0 && location.pathname === "/" ? 0 : 1,
     padding: "8px 24px",
     width: "100%",
     maxWidth: "414px",
     height: 64,
+    transition: "0.3s ease",
   });
 
   const textStyle = css({
@@ -75,7 +76,7 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     } else return "#????";
   };
 
-  const title = params.id ? formatId(params.id) : "Pokédex";
+  const title = params.id ? formatId(params.id) : "Pokédex App";
 
   return (
     <div css={baseStyle}>
