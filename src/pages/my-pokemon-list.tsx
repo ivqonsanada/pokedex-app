@@ -24,7 +24,6 @@ const MyPokemonList = () => {
         marginTop: "8px",
       },
     },
-    // padding: ""
   });
 
   const buttonStyle = css({
@@ -46,7 +45,7 @@ const MyPokemonList = () => {
       {myPokemons.length === 0 && (
         <div css={noPokemonStyle}>
           <img
-            src="https://cdn.statically.io/gh/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
+            src="https://cdn.statically.io/gh/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/143.gif"
             alt="Charizard sprite"
             width={160}
             height={160}

@@ -9,14 +9,20 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 import pokemonIcon from "@iconify/icons-simple-icons/pokemon";
+import { usePokemon } from "contexts/pokemon-context";
 
 const PokemonList = () => {
   const { scrollY } = useWindowScrollPositions();
+  const { myPokemons } = usePokemon();
 
   const gqlVariables = { limit: 12, offset: 0 };
-  const { loading, error, data } = useQuery(GET_POKEMON_LIST, {
+  const { loading, error, data, fetchMore } = useQuery(GET_POKEMON_LIST, {
     variables: gqlVariables,
   });
+
+  const handleLoadMore = () => {
+    fetchMore({ variables: { offset: data?.pokemons.results.length } });
+  };
 
   const loadingStyle = css({
     color: "rgb(100 116 139)",
@@ -39,12 +45,9 @@ const PokemonList = () => {
     padding: "8px 16px",
     borderRadius: "0.24em 0 0 0.24em",
     margin: "8px 0 -16px",
-    zIndex: 100,
+    zIndex: 101,
     marginTop: 0,
     transition: "0.3s ease",
-    "* + *": {
-      marginLeft: "4px",
-    },
   });
 
   const ownedStyle = css({
@@ -52,6 +55,7 @@ const PokemonList = () => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginLeft: 96,
     "span:last-of-type": {
       fontWeight: "bold",
       fontSize: "1.2em",
@@ -65,23 +69,19 @@ const PokemonList = () => {
   const pokemonIconStyle = css({
     position: "absolute",
     transform: "translate(-60px, -4px)",
-    "+ span": {
-      width: 96,
-    },
   });
 
   return (
     <Container>
       {loading && <p css={loadingStyle}>Loading...</p>}
       {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
-      {data && <PokemonCardList data={data.pokemons} />}
+      {data && <PokemonCardList data={data.pokemons} loadMore={handleLoadMore} />}
       <Link to="/my-pokemon">
         <p css={ownedContainerStyle}>
           <Icon icon={pokemonIcon} width={96} height={96} css={pokemonIconStyle} />
-          <span></span>
           <span css={ownedStyle}>
             <span>Owned</span>
-            <span>0</span>
+            <span>{myPokemons.length}</span>
           </span>
         </p>
       </Link>

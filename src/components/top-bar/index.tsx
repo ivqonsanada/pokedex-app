@@ -35,7 +35,7 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     width: "100%",
     maxWidth: "414px",
     height: 64,
-    transition: "0.3s ease",
+    transition: "0.2s ease",
   });
 
   const textStyle = css({
