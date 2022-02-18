@@ -69,36 +69,15 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
-registerRoute(
-  ({ url }) => url.origin === "https://graphql-pokeapi.graphcdn.app",
-  new NetworkFirst({
-    cacheName: "graphql-api-cache",
-    plugins: [
-      new ExpirationPlugin({
-        maxEntries: 64,
-        maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days,
-      }),
-    ],
-  })
-);
-
-registerRoute(
-  ({ url }) => url.origin === "https://graphql-pokeapi.graphcdn.app",
-  new NetworkOnly({
-    plugins: [
-      new BackgroundSyncPlugin("graphqlQueue", {
-        maxRetentionTime: 24 * 60, // Retry for max of 24 Hours (specified in minutes)
-      }),
-    ],
-  }),
-  "POST"
-);
 
 registerRoute(
   ({ request }) => request.destination === "image",
   new CacheFirst({
     cacheName: "image-cache",
     plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
       new ExpirationPlugin({
         maxEntries: 1000,
         maxAgeSeconds: 24 * 60 * 60 * 30, // 30 days,
