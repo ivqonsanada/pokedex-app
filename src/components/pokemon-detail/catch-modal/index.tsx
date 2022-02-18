@@ -100,6 +100,9 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
 
     return () => {
       clearTimeout(timeoutId);
+
+      const htmlElement = document.getElementsByTagName("html")[0];
+      htmlElement.style.overflowY = "scroll";
     };
   }, []);
 

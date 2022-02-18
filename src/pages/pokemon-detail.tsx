@@ -10,7 +10,7 @@ import MoveList from "components/pokemon-detail/move-list";
 import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import staticCDN from "convert-staticzap";
 
@@ -71,6 +71,9 @@ const PokemonDetail = () => {
   };
 
   const handleCatch = () => {
+    const htmlElement = document.getElementsByTagName("html")[0];
+    htmlElement.style.overflowY = "hidden";
+
     setIsCatching(true);
 
     setTimeout(() => {
@@ -86,6 +89,13 @@ const PokemonDetail = () => {
   const loadingStyle = css({
     color: "rgb(100 116 139)",
   });
+
+  useEffect(() => {
+    return () => {
+      const htmlElement = document.getElementsByTagName("html")[0];
+      htmlElement.style.overflowY = "scroll";
+    };
+  }, []);
 
   return (
     <Container>
