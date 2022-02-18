@@ -20,13 +20,20 @@ const PokemonCardList: React.FC<Props> = ({ data, loadMore }) => {
 
   const results = data?.results || [];
 
+  const loadingStyle = css({
+    color: "rgb(100 116 139)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  });
+
   return (
     <InfiniteScroll
       css={containerStyle}
       dataLength={results.length} //This is important field to render the next data
-      next={() => loadMore()}
+      next={loadMore}
       hasMore={true}
-      loader={<p>Loading...</p>}
+      loader={<p css={loadingStyle}>Loading...</p>}
     >
       {results.map((item: Pokemon.PokemonItem) => {
         return <PokemonCardItem key={item.id} {...item} />;
