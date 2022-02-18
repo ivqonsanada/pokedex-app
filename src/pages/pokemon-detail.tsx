@@ -71,6 +71,12 @@ const PokemonDetail = () => {
   };
 
   const handleCatch = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+
     const htmlElement = document.getElementsByTagName("html")[0];
     htmlElement.style.overflowY = "hidden";
 
