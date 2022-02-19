@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
-import MyPokemonCardItem from "./index";
+import MyPokemonCardItem from "components/my-pokemon-card-list/my-pokemon-card-item";
 import staticCDN from "convert-staticzap";
 
 const props = (id: number | null) => {
