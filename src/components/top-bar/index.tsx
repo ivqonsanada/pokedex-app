@@ -5,16 +5,17 @@ import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
+import { useTopBar } from "contexts/topbar-context";
 
 type Props = {
   isDeepPath: boolean;
 };
 
 const TopBar: React.FC<Props> = ({ isDeepPath }) => {
+  const { title } = useTopBar();
   const location = useLocation();
   const navigate = useNavigate();
   const { scrollY } = useWindowScrollPositions();
-  const params = useParams();
 
   const baseStyle = css({
     position: "fixed",
@@ -38,9 +39,10 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     transition: "0.2s ease",
   });
 
-  const textStyle = css({
+  const titleStyle = css({
     fontWeight: "bold",
     fontSize: "1.5em",
+    textTransform: "capitalize",
   });
 
   const iconStyle = css({
@@ -68,16 +70,6 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     else navigate("/", { replace: true });
   };
 
-  const formatId = (id: number | string) => {
-    if (id) {
-      if (id < 10) return "#00" + id;
-      if (id < 100) return "#0" + id;
-      else return "#" + id;
-    } else return "#????";
-  };
-
-  const title = params.id ? formatId(params.id) : "Pokédex App";
-
   return (
     <div css={baseStyle}>
       <p css={containerStyle}>
@@ -90,7 +82,7 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
         ) : (
           <span css={emptyIconStyle}></span>
         )}
-        <span css={textStyle}>{title}</span>
+        <span css={titleStyle}>{title}</span>
         <span css={emptyIconStyle}></span>
       </p>
     </div>

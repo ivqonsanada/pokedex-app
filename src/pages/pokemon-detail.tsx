@@ -1,7 +1,15 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useParams } from "react-router";
+import { useQueryParams } from "hooks/useQueryParams";
+import { useTopBar } from "contexts/topbar-context";
+import { useIntersectionObserver } from "hooks/useIntersectionObserver";
+import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 import { useQuery } from "@apollo/client";
+import { GET_POKEMON_BY_NAME } from "graphql/queries";
+import staticCDN from "convert-staticzap";
 import Container from "components/layout/container";
 import CatchButton from "components/pokemon-detail/catch-button";
 import CatchModal from "components/pokemon-detail/catch-modal";
@@ -9,16 +17,17 @@ import PokemonDetailAbout from "components/pokemon-detail/about";
 import MoveList from "components/pokemon-detail/move-list";
 import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
-import { GET_POKEMON_BY_NAME } from "graphql/queries";
-import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
-import staticCDN from "convert-staticzap";
-import { useQueryParams } from "hooks/useQueryParams";
 
 const PokemonDetail = () => {
   const params = useParams();
   const location = useLocation();
+  const { scrollY } = useWindowScrollPositions();
   const { nickname } = useQueryParams(location.search);
+  const { changeTitle } = useTopBar();
+
+  const nameRef = useRef<HTMLDivElement | null>(null);
+  const entry = useIntersectionObserver(nameRef, {});
+  const isNameVisible = !!entry?.isIntersecting;
 
   const [isCatching, setIsCatching] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -114,11 +123,23 @@ const PokemonDetail = () => {
   });
 
   useEffect(() => {
+    const formatId = (id: number | string) => {
+      if (id) {
+        if (id < 10) return "#00" + id;
+        if (id < 100) return "#0" + id;
+        else return "#" + id;
+      } else return "#????";
+    };
+
+    if (params.id && (scrollY === 0 || isNameVisible)) changeTitle(formatId(params.id));
+    else if (params.name && !isNameVisible) changeTitle(params.name);
+
     return () => {
       const htmlElement = document.getElementsByTagName("html")[0];
       htmlElement.style.overflowY = "scroll";
+      changeTitle("default");
     };
-  }, []);
+  }, [params, scrollY, changeTitle, isNameVisible]);
 
   return (
     <Container>
@@ -134,7 +155,9 @@ const PokemonDetail = () => {
         />
 
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
-          <p css={nameStyle}>{pokemon.name}</p>
+          <p css={nameStyle} ref={nameRef}>
+            {pokemon.name}
+          </p>
           {nickname && <p css={nicknameStyle}>{nickname}</p>}
 
           <TypeList data={pokemon.types} />
