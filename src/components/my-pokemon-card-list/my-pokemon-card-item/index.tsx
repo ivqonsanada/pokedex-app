@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import staticCDN from "convert-staticzap";
 
 type Props = {
-  id: number;
+  id: number | null;
   name: string;
   sprite: string;
   nickname: string;
@@ -79,7 +79,7 @@ const MyPokemonCardItem: React.FC<Props> = ({
       if (id < 10) return "#00" + id;
       if (id < 100) return "#0" + id;
       else return "#" + id;
-    } else return "#????";
+    } else return "#???";
   };
 
   const path = `/pokemon/${id}--${name}?nickname=${nickname}`;
