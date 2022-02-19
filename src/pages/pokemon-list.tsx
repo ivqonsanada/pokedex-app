@@ -16,7 +16,12 @@ const PokemonListPage = () => {
   const { myPokemons } = usePokemon();
 
   const gqlVariables = { limit: 12, offset: 0 };
-  const { loading, error, data, fetchMore } = useQuery(GET_POKEMON_LIST, {
+  const {
+    loading: isLoading,
+    error: isError,
+    data,
+    fetchMore,
+  } = useQuery(GET_POKEMON_LIST, {
     variables: gqlVariables,
   });
 
@@ -74,8 +79,8 @@ const PokemonListPage = () => {
 
   return (
     <Container>
-      {loading && <p css={loadingStyle}>Loading...</p>}
-      {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
+      {isLoading && <p css={loadingStyle}>Loading...</p>}
+      {isError && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
       {data && <PokemonCardList data={data.pokemons} loadMore={handleLoadMore} />}
       <Link to="/my-pokemon">
         <p css={ownedContainerStyle}>
