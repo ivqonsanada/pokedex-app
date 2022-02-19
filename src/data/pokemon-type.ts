@@ -16,7 +16,7 @@ import butterflyIcon from "@iconify/icons-ph/butterfly";
 import heavyMetal from "@iconify/icons-icon-park-outline/heavy-metal";
 import dragonIcon from "@iconify/icons-la/dragon";
 import ghostIcon from "@iconify/icons-bx/ghost";
-import outlineDarkMode from "@iconify/icons-ic/outline-dark-mode";
+import moonIcon from "@iconify/icons-bytesize/moon";
 
 export const normal = {
   color: "#A8A878",
@@ -132,7 +132,7 @@ export const ghost = {
 
 export const dark = {
   color: "#705848",
-  icon: outlineDarkMode,
+  icon: moonIcon,
   type: {
     name: "dark",
   },

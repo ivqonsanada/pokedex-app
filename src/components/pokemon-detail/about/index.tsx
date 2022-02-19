@@ -3,7 +3,7 @@
 import { css } from "@emotion/react";
 import { Icon } from "@iconify/react";
 import weightOutline from "@iconify/icons-healthicons/weight-outline";
-import ruler24Regular from "@iconify/icons-fluent/ruler-24-regular";
+import rulerVertical from "@iconify/icons-la/ruler-vertical";
 import { useParams } from "react-router";
 import { useUnit } from "hooks/useUnit";
 import configureMeasurements, { mass, length } from "convert-units";
@@ -121,7 +121,7 @@ const PokemonDetailAbout: React.FC<Props> = ({ data, moves }) => {
             <p css={labelStyle}>Height</p>
           </div>
           <div>
-            <Icon css={iconStyle} icon={ruler24Regular} />
+            <Icon css={iconStyle} icon={rulerVertical} />
           </div>
         </div>
       </div>

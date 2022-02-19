@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import uiUserProfile from "@iconify/icons-healthicons/ui-user-profile";
-import baselineCatchingPokemon from "@iconify/icons-ic/baseline-catching-pokemon";
+import pokeballIcon from "@iconify/icons-mdi/pokeball";
 import NavItem from "./nav-item";
 import { useLocation } from "react-router";
 import { css } from "@emotion/react";
@@ -34,7 +34,7 @@ const NavMenu: React.FC<Props> = ({ isDeepPath }) => {
 
   const items = [
     {
-      icon: baselineCatchingPokemon,
+      icon: pokeballIcon,
       name: "Catch Pokémon",
       path: "/",
     },
