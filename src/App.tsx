@@ -9,7 +9,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <PokemonProvider>
-        <Toaster />
+        <Toaster
+          containerStyle={{
+            top: 64,
+          }}
+        />
         <Routes />
       </PokemonProvider>
     </ApolloProvider>

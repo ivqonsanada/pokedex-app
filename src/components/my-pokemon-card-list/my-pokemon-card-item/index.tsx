@@ -34,7 +34,9 @@ const MyPokemonCardItem: React.FC<Props> = ({
 
   const imageStyle = css({
     marginTop: "-35%",
-    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: isHovered ? "90%" : "100%",
     objectFit: "contain",
     zIndex: 1,
   });
@@ -67,7 +69,7 @@ const MyPokemonCardItem: React.FC<Props> = ({
     borderRadius: "999px",
     cursor: "pointer",
     ":hover": {
-      borderColor: "rgb(71 85 105)",
+      borderColor: "rgb(100 116 139)",
     },
   });
 
@@ -79,7 +81,7 @@ const MyPokemonCardItem: React.FC<Props> = ({
     } else return "#????";
   };
 
-  const path = `/pokemon/${id}-${name}`;
+  const path = `/pokemon/${id}--${name}?nickname=${nickname}`;
   const image = isHovered
     ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
     : sprite;
@@ -100,7 +102,7 @@ const MyPokemonCardItem: React.FC<Props> = ({
           <p css={idStyle}>{idNum}</p>
           <div>
             <p css={nameStyle}>{name}</p>
-            <p css={nickNameStyle}>({nickname})</p>
+            <p css={nickNameStyle}>{nickname}</p>
           </div>
           <button css={buttonStyle} onClick={(e) => handleRelease(e, nickname)}>
             Release

@@ -11,11 +11,15 @@ import StatList from "components/pokemon-detail/stat-list";
 import TypeList from "components/pokemon-detail/type-list";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import staticCDN from "convert-staticzap";
+import { useQueryParams } from "hooks/useQueryParams";
 
 const PokemonDetail = () => {
   const params = useParams();
+  const location = useLocation();
+  const { nickname } = useQueryParams(location.search);
+
   const [isCatching, setIsCatching] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -60,11 +64,16 @@ const PokemonDetail = () => {
     textTransform: "capitalize",
   });
 
+  const nicknameStyle = css({
+    fontSize: "1em",
+    textAlign: "center",
+    marginTop: "8px",
+    color: "rgb(150 165 186)",
+  });
+
   const subHeading = css({
     fontWeight: "bold",
     color: "rgb(203 213 225)",
-    // fontSize: "0.9em",
-    // textAlign: "center",
     padding: "0 4px",
     marginBottom: "16px",
   });
@@ -126,13 +135,15 @@ const PokemonDetail = () => {
 
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
           <p css={nameStyle}>{pokemon.name}</p>
+          {nickname && <p css={nicknameStyle}>{nickname}</p>}
+
           <TypeList data={pokemon.types} />
         </div>
 
         {loading && <p css={loadingStyle}>Loading...</p>}
         {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
 
-        {!loading && (
+        {!loading && !nickname && (
           <CatchButton
             handleClick={handleCatch}
             isCatching={isCatching}
