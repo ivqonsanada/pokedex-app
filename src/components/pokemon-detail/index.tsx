@@ -70,7 +70,9 @@ const PokemonDetail: React.FC<Props> = ({
 
   return (
     <>
-      <TypeList data={pokemon.types} />
+      <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
+        <TypeList data={pokemon.types} />
+      </div>
 
       {isLoading && <p css={loadingStyle}>Loading...</p>}
       {isError && <p css={loadingStyle}>Seems something bad happen to the server.</p>}

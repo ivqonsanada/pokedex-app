@@ -60,7 +60,11 @@ const CatchButton: React.FC<Props> = ({ handleClick, isCatching, isModalOpen }) 
 
   return (
     <>
-      <button css={[buttonStyle, isCatching && transparent]} onClick={handleClick}>
+      <button
+        css={[buttonStyle, isCatching && transparent]}
+        onClick={handleClick}
+        disabled={isCatching}
+      >
         <img
           src="/pokeball.svg"
           alt="Pokeball"
