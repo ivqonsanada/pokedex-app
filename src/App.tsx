@@ -1,16 +1,16 @@
 import "./App.css";
 import Routes from "routes";
 import { Toaster } from "react-hot-toast";
-import Provider from "provider";
+import Provider from "./provider";
 
 function App() {
+  const toasterContainerStyle = {
+    top: 72,
+  };
+
   return (
     <Provider>
-      <Toaster
-        containerStyle={{
-          top: 72,
-        }}
-      />
+      <Toaster containerStyle={toasterContainerStyle} />
       <Routes />
     </Provider>
   );

@@ -11,7 +11,7 @@ import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 import pokemonIcon from "@iconify/icons-simple-icons/pokemon";
 import { usePokemon } from "contexts/pokemon-context";
 
-const PokemonList = () => {
+const PokemonListPage = () => {
   const { scrollY } = useWindowScrollPositions();
   const { myPokemons } = usePokemon();
 
@@ -90,4 +90,4 @@ const PokemonList = () => {
   );
 };
 
-export default PokemonList;
+export default PokemonListPage;

@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { Icon } from "@iconify/react";
-import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
 import { useTopBar } from "contexts/topbar-context";
+import { Icon } from "@iconify/react";
+import chevronLeft from "@iconify/icons-akar-icons/chevron-left";
 
 type Props = {
   isDeepPath: boolean;

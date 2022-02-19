@@ -11,26 +11,20 @@ import { useQuery } from "@apollo/client";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
 import staticCDN from "convert-staticzap";
 import Container from "components/layout/container";
-import CatchButton from "components/pokemon-detail/catch-button";
-import CatchModal from "components/pokemon-detail/catch-modal";
-import PokemonDetailAbout from "components/pokemon-detail/about";
-import MoveList from "components/pokemon-detail/move-list";
-import StatList from "components/pokemon-detail/stat-list";
-import TypeList from "components/pokemon-detail/type-list";
+import PokemonDetail from "components/pokemon-detail";
 
-const PokemonDetail = () => {
+const PokemonDetailPage = () => {
   const params = useParams();
-  const location = useLocation();
   const { scrollY } = useWindowScrollPositions();
+  const location = useLocation();
   const { nickname } = useQueryParams(location.search);
   const { changeTitle } = useTopBar();
 
   const nameRef = useRef<HTMLDivElement | null>(null);
-  const entry = useIntersectionObserver(nameRef, {});
-  const isNameVisible = !!entry?.isIntersecting;
+  const nameEntry = useIntersectionObserver(nameRef, {});
+  const isNameVisible = !!nameEntry?.isIntersecting;
 
   const [isCatching, setIsCatching] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   const gqlVariables = { name: params.name };
   const { loading, error, data } = useQuery(GET_POKEMON_BY_NAME, {
@@ -80,13 +74,6 @@ const PokemonDetail = () => {
     color: "rgb(150 165 186)",
   });
 
-  const subHeading = css({
-    fontWeight: "bold",
-    color: "rgb(203 213 225)",
-    padding: "0 4px",
-    marginBottom: "16px",
-  });
-
   const transition = css({ transition: `0.4s ease` });
   const fadeOutEffect = css({ opacity: 0 });
   const spacingY = css({ "> * + *": { marginTop: "24px" } });
@@ -95,32 +82,6 @@ const PokemonDetail = () => {
     e.target.src = staticCDN(pokemon.sprite) || pokemon.sprite;
     e.target.style.width = "100%";
   };
-
-  const handleCatch = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-
-    const htmlElement = document.getElementsByTagName("html")[0];
-    htmlElement.style.overflowY = "hidden";
-
-    setIsCatching(true);
-
-    setTimeout(() => {
-      setShowModal(true);
-    }, 1600);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setIsCatching(false);
-  };
-
-  const loadingStyle = css({
-    color: "rgb(100 116 139)",
-  });
 
   useEffect(() => {
     const formatId = (id: number | string) => {
@@ -159,41 +120,18 @@ const PokemonDetail = () => {
             {pokemon.name}
           </p>
           {nickname && <p css={nicknameStyle}>{nickname}</p>}
-
-          <TypeList data={pokemon.types} />
         </div>
 
-        {loading && <p css={loadingStyle}>Loading...</p>}
-        {error && <p css={loadingStyle}>Seems something bad happen to the server.</p>}
-
-        {!loading && !nickname && (
-          <CatchButton
-            handleClick={handleCatch}
-            isCatching={isCatching}
-            isModalOpen={showModal}
-          />
-        )}
-        {showModal && <CatchModal data={pokemon} closeModal={handleCloseModal} />}
-
-        {!loading && (
-          <div css={[spacingY, transition, isCatching && fadeOutEffect]}>
-            <div>
-              <p css={subHeading}>About</p>
-              <PokemonDetailAbout data={pokemon.about} moves={pokemon.moves.length} />
-            </div>
-            <div>
-              <p css={subHeading}>Stats</p>
-              <StatList data={pokemon.stats} />
-            </div>
-            <div>
-              <p css={subHeading}>Moves</p>
-              <MoveList data={pokemon.moves} />
-            </div>
-          </div>
-        )}
+        <PokemonDetail
+          isLoading={loading}
+          isError={error}
+          isCatching={isCatching}
+          setIsCatching={setIsCatching}
+          pokemon={pokemon}
+        />
       </div>
     </Container>
   );
 };
 
-export default PokemonDetail;
+export default PokemonDetailPage;

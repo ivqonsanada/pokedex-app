@@ -6,7 +6,7 @@ import MyPokemonCardList from "components/my-pokemon-card-list";
 import { usePokemon } from "contexts/pokemon-context";
 import { Link } from "react-router-dom";
 
-const MyPokemonList = () => {
+const MyPokemonListPage = () => {
   const { myPokemons } = usePokemon();
 
   const noPokemonStyle = css({
@@ -64,4 +64,4 @@ const MyPokemonList = () => {
   );
 };
 
-export default MyPokemonList;
+export default MyPokemonListPage;
