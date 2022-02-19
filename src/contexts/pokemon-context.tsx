@@ -17,7 +17,7 @@ const PokemonContext = createContext<PokemonContextInterface>({
 });
 
 const toastStyle = {
-  borderRadius: "10px",
+  borderRadius: "0.3em",
   background: "rgb(30 41 59)",
   color: "rgb(203 213 225)",
   backgroundColor: "rgba(71, 85, 105, 0.75)",

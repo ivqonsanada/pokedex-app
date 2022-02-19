@@ -11,7 +11,7 @@ function App() {
       <PokemonProvider>
         <Toaster
           containerStyle={{
-            top: 64,
+            top: 72,
           }}
         />
         <Routes />
