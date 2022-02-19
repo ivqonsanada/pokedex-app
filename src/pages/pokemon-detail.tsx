@@ -92,15 +92,16 @@ const PokemonDetailPage = () => {
       } else return "#????";
     };
 
-    if (params.id && (scrollY === 0 || isNameVisible)) changeTitle(formatId(params.id));
-    else if (params.name && !isNameVisible) changeTitle(params.name);
+    if (params.id && (scrollY === 0 || isNameVisible) && !isCatching)
+      changeTitle(formatId(params.id));
+    else if (params.name && (!isNameVisible || isCatching)) changeTitle(params.name);
 
     return () => {
       const htmlElement = document.getElementsByTagName("html")[0];
       htmlElement.style.overflowY = "scroll";
       changeTitle("default");
     };
-  }, [params, scrollY, changeTitle, isNameVisible]);
+  }, [params, scrollY, changeTitle, isNameVisible, isCatching]);
 
   return (
     <Container>
