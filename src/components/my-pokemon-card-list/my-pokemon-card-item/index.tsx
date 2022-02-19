@@ -56,13 +56,14 @@ const MyPokemonCardItem: React.FC<Props> = ({
   const nickNameStyle = css({
     color: "rgb(203 213 225)",
     opacity: "0.6",
+    marginTop: "4px",
   });
 
   const buttonStyle = css({
     background: "rgb(51 65 85)",
     border: "solid 2px transparent",
     display: "flex",
-    margin: "24px auto 0",
+    margin: "16px auto 0",
     padding: "8px 24px",
     color: "rgb(226 232 240)",
     fontWeight: "bold",
