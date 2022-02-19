@@ -48,6 +48,7 @@ const PokemonList = () => {
     zIndex: 101,
     marginTop: 0,
     transition: "0.3s ease",
+    overflow: "hidden",
   });
 
   const ownedStyle = css({
