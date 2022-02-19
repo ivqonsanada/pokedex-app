@@ -48,7 +48,7 @@ const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
     } else return "#????";
   };
 
-  const path = `/pokemon/${id}-${name}`;
+  const path = `/pokemon/${id}--${name}`;
   const sprite = isHovered
     ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
     : image;
