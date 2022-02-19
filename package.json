@@ -47,6 +47,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
+      "!src/mocks/**/*.{ts,tsx}",
       "!src/service-worker.ts",
       "!src/serviceWorkerRegistration.ts",
       "!src/reportWebVitals.ts",
@@ -98,9 +99,11 @@
     "@iconify/react": "^3.1.3",
     "@types/react-test-renderer": "^17.0.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "msw": "^0.38.1"
   }
 }

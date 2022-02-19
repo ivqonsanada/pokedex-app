@@ -37,10 +37,32 @@ declare namespace Pokemon {
     dreamworld: string;
   };
 
+  type Pokemon = {
+    abilities?: Ability[];
+    base_experience?: number;
+    forms?: BaseName[];
+    game_indices?: GameIndex[];
+    height?: number;
+    held_items?: HeldItem[];
+    id?: number;
+    is_default?: boolean;
+    location_area_encounters?: string;
+    moves?: Move[];
+    name?: string;
+    order?: number;
+    species?: BaseName;
+    sprites?: Sprite;
+    stats?: Stat[];
+    types?: Type[];
+    weight?: number;
+    status?: boolean;
+    message?: string;
+  };
+
   type Type = {
     slot?: number;
     type: BaseName;
-    color: string;
+    color?: string;
     icon?: IconifyIcon;
   };
 }
