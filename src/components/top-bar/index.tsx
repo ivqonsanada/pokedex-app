@@ -80,8 +80,8 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     <div css={baseStyle}>
       <div css={containerStyle}>
         {isDeepPath ? (
-          <button css={backButton}>
-            <Icon icon={chevronLeft} css={iconStyle} onClick={handleBack} />
+          <button css={backButton} onClick={handleBack} aria-label="back button">
+            <Icon icon={chevronLeft} css={iconStyle} />
           </button>
         ) : (
           <div css={emptyIconStyle}></div>
