@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import TopBar from "components/top-bar";
-import { BrowserRouter } from "react-router-dom";
-import Provider from "provider";
 import userEvent from "@testing-library/user-event";
+import TopBar from "components/top-bar";
+import Provider from "provider";
+import { BrowserRouter } from "react-router-dom";
 
 const view = (overrideProps = {}) =>
   render(

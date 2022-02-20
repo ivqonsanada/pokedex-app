@@ -1,7 +1,7 @@
-import PokemonListPage from "pages/pokemon-list";
 import { screen } from "@testing-library/react";
-import { renderWithRoute } from "mocks/renders";
 import userEvent from "@testing-library/user-event";
+import { renderWithRoute } from "mocks/renders";
+import PokemonListPage from "pages/pokemon-list";
 
 const view = renderWithRoute(<PokemonListPage />);
 

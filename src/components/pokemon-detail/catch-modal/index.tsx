@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import { useEffect } from "react";
+
 import CatchedState from "./catched-state";
 import CatchingState from "./catching-state";
 import RunAwayState from "./run-away-state";

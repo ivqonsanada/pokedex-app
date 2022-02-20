@@ -1,4 +1,4 @@
-import { screen, waitForElementToBeRemoved, within } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { myPokemons } from "mocks/data/my-pokemons";
 import { renderWithRoute } from "mocks/renders";

@@ -36,7 +36,14 @@
   },
   "eslintConfig": {
     "plugins": [
-      "unused-imports"
+      "unused-imports",
+      "simple-import-sort"
+    ],
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:prettier/recommended",
+      "plugin:jsx-a11y/recommended"
     ],
     "rules": {
       "no-unused-vars": "off",
@@ -49,14 +56,10 @@
           "args": "after-used",
           "argsIgnorePattern": "^_"
         }
-      ]
-    },
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "plugin:prettier/recommended",
-      "plugin:jsx-a11y/recommended"
-    ]
+      ],
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error"
+    }
   },
   "jest": {
     "collectCoverageFrom": [
@@ -111,6 +114,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.4",

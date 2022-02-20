@@ -1,9 +1,9 @@
-import { renderWithRoute } from "mocks/renders";
-import { blastoise } from "mocks/data/pokemon";
-import CatchModal from "components/pokemon-detail/catch-modal";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import CatchModal from "components/pokemon-detail/catch-modal";
 import { myPokemons } from "mocks/data/my-pokemons";
+import { blastoise } from "mocks/data/pokemon";
+import { renderWithRoute } from "mocks/renders";
 
 const view = (overrideProps = {}) =>
   renderWithRoute(

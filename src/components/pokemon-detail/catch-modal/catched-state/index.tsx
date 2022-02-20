@@ -2,9 +2,9 @@
 
 import { css } from "@emotion/react";
 import { usePokemon } from "contexts/pokemon-context";
+import staticCDN from "convert-staticzap";
 import { FormEvent, MutableRefObject, useRef, useState } from "react";
 import { useParams } from "react-router";
-import staticCDN from "convert-staticzap";
 
 type Props = {
   handleClose: () => void;
