@@ -30,6 +30,7 @@ const PokemonDetail: React.FC<Props> = ({
   const location = useLocation();
   const { nickname } = useQueryParams(location.search);
   const [showModal, setShowModal] = useState(false);
+  const [state, setState] = useState("Catching");
 
   const subHeadingStyle = css({
     fontWeight: "bold",
@@ -62,6 +63,13 @@ const PokemonDetail: React.FC<Props> = ({
   const handleCloseModal = () => {
     setShowModal(false);
     setIsCatching(false);
+    setState("Catching");
+  };
+
+  const handleState = () => {
+    const isCatched = Math.random() > 0.5;
+    if (isCatched) setState("Catched");
+    else setState("Run Away");
   };
 
   const loadingStyle = css({
@@ -84,7 +92,14 @@ const PokemonDetail: React.FC<Props> = ({
           isModalOpen={showModal}
         />
       )}
-      {showModal && <CatchModal data={pokemon} closeModal={handleCloseModal} />}
+      {showModal && (
+        <CatchModal
+          data={pokemon}
+          state={state}
+          handleState={handleState}
+          closeModal={handleCloseModal}
+        />
+      )}
 
       {!isLoading && (
         <div css={[spacingY, transition, isCatching && fadeOutEffect]}>

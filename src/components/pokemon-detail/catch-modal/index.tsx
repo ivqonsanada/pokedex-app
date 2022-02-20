@@ -1,19 +1,19 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
-import CatchedState from "./catched";
-import CatchingState from "./catching";
-import RunAwayState from "./run-away";
+import { useEffect } from "react";
+import CatchedState from "./catched-state";
+import CatchingState from "./catching-state";
+import RunAwayState from "./run-away-state";
 
 type Props = {
   data: any;
+  state: string;
   closeModal: () => void;
+  handleState: () => void;
 };
 
-const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
-  const [state, setState] = useState("Catching");
-
+const CatchModal: React.FC<Props> = ({ data, state, closeModal, handleState }) => {
   const containerStyle = css({
     position: "fixed",
     display: "flex",
@@ -52,7 +52,7 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      handleCatch();
+      handleState();
     }, 2500);
 
     return () => {
@@ -62,12 +62,6 @@ const CatchModal: React.FC<Props> = ({ data, closeModal }) => {
       htmlElement.style.overflowY = "scroll";
     };
   }, []);
-
-  const handleCatch = () => {
-    const isCatched = Math.random() > 0.5;
-    if (isCatched) setState("Catched");
-    else setState("Run Away");
-  };
 
   return (
     <div css={containerStyle}>
