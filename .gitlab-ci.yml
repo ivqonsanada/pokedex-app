@@ -1,0 +1,21 @@
+image: "node:latest"
+
+stages:
+  - build
+  - test
+
+build_app:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - build
+    expire_in: 1 day
+
+test_app:
+  stage: test
+  script:
+    - npx lint-staged
+    - npm test -- --watchAll=false
