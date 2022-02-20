@@ -6,8 +6,8 @@ import { blastoise } from "mocks/data/pokemon";
 const view = renderWithRoute(
   <PokemonDetailAbout data={blastoise} moves={blastoise.moves!.length} />,
   {
-    route: "/pokemon/4--blastoise",
-    path: "/pokemon/:id--:name",
+    route: "/4--blastoise",
+    path: "/:id--:name",
   }
 );
 test("render weight", () => {
