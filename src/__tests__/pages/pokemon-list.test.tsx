@@ -3,10 +3,7 @@ import { screen } from "@testing-library/react";
 import { renderWithRoute } from "mocks/renders";
 import userEvent from "@testing-library/user-event";
 
-const view = renderWithRoute(<PokemonListPage />, {
-  route: "/",
-  path: "/",
-});
+const view = renderWithRoute(<PokemonListPage />);
 
 test("render top bar", () => {
   view();
