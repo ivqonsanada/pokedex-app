@@ -1,100 +1,56 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import renderer from "react-test-renderer";
+import { screen, within } from "@testing-library/react";
 import MyPokemonCardItem from "components/my-pokemon-card-list/my-pokemon-card-item";
-import staticCDN from "convert-staticzap";
+import userEvent from "@testing-library/user-event";
+import { renderWithRoute } from "mocks/renders";
+import { myPokemons } from "mocks/data/my-pokemons";
 
-const props = (id: number | null) => {
-  return {
-    id: id,
-    name: "charizard",
-    sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
-    spriteAnimated: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`,
-    nickname: "asdfe",
-    handleRelease: jest.fn(),
-  };
-};
+const view = (overrideProps = {}) =>
+  renderWithRoute(
+    <MyPokemonCardItem {...myPokemons[0]} handleRelease={jest.fn()} {...overrideProps} />
+  )();
 
-it("renders without crashing", () => {
-  const tree = renderer
-    .create(
-      <BrowserRouter>
-        <MyPokemonCardItem {...props(1)} />
-      </BrowserRouter>
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+test("render animated sprite on hover", async () => {
+  view();
+  const image = await screen.findByAltText(/bulbasaur sprite/i);
+  expect(image).toHaveAttribute("src", expect.stringMatching(/.png/i));
+  userEvent.hover(image);
+  expect(image).toHaveAttribute("src", expect.stringMatching(/.gif/i));
 });
 
-test("hovers sprite to show animated sprite", async () => {
-  render(
-    <BrowserRouter>
-      <MyPokemonCardItem {...props(10)} />
-    </BrowserRouter>
-  );
-
-  const image = screen.getByAltText(props(10).name + " sprite");
-
-  expect(image).toHaveAttribute("src", staticCDN(props(10).sprite));
-
-  fireEvent.mouseOver(image);
-
-  expect(image).toHaveAttribute("src", staticCDN(props(10).spriteAnimated));
+test("id is more than 10 and less than 100", async () => {
+  view({ id: 10 });
+  expect(screen.getByText(/#010/i)).toBeVisible();
 });
 
-test("id more than 100", async () => {
-  render(
-    <BrowserRouter>
-      <MyPokemonCardItem {...props(1000)} />
-    </BrowserRouter>
-  );
-
-  const id = screen.getByText("#1000");
-  expect(id).toBeVisible();
+test("id is more than 100", async () => {
+  view({ id: 101 });
+  expect(screen.getByText(/#101/i)).toBeVisible();
 });
 
-test("null id", async () => {
-  render(
-    <BrowserRouter>
-      <MyPokemonCardItem {...props(null)} />
-    </BrowserRouter>
-  );
+test("id is null", async () => {
+  view({ id: null });
+  expect(screen.getByText(/#\?\?\?/i)).toBeVisible();
+});
 
-  const id = screen.getByText("#???");
-  expect(id).toBeVisible();
+test("staticCDN with known src", async () => {
+  view({ sprite: myPokemons[0].sprite });
+  const image = screen.getByAltText(/sprite/i);
+  expect(image).toHaveAttribute("src", expect.not.stringMatching(myPokemons[0].sprite));
+});
+
+test("staticCDN with unknown src", async () => {
+  view({ sprite: "http://unknown.com" });
+  const image = screen.getByAltText(/sprite/i);
+  expect(image).toHaveAttribute("src", expect.stringMatching("http://unknown.com"));
 });
 
 test("release pokemon", async () => {
-  render(
-    <BrowserRouter>
-      <MyPokemonCardItem {...props(1)} />
-    </BrowserRouter>
-  );
-
-  const button = screen.getByText("Release");
-  expect(button).toBeVisible();
-
-  fireEvent.click(button);
-});
-
-test("staticCDN can't produce new link", async () => {
-  const props = {
-    id: 33,
-    name: "charizard",
-    sprite: `https://test/${33}.png`,
-    spriteAnimated: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${33}.gif`,
-    nickname: "asdfe",
-    handleRelease: jest.fn(),
-  };
-
-  render(
-    <BrowserRouter>
-      <MyPokemonCardItem {...props} />
-    </BrowserRouter>
-  );
-
-  const button = screen.getByText("Release");
-  expect(button).toBeVisible();
-
-  fireEvent.click(button);
+  view();
+  const link = screen.getByRole("link", {
+    name: /bulbasaur sprite #001 bulbasaur si ceria release/i,
+  });
+  expect(link).toBeVisible();
+  const releaseButton = within(link).getByRole("button", { name: /release/i });
+  userEvent.click(releaseButton);
+  expect(link).not.toBeVisible();
 });

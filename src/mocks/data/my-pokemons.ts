@@ -1,6 +1,6 @@
 export const myPokemons = [
   {
-    id: "1",
+    id: 1,
     name: "bulbasaur",
     sprite:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
@@ -9,7 +9,7 @@ export const myPokemons = [
     nickname: "si ceria",
   },
   {
-    id: "4",
+    id: 4,
     name: "charmander",
     sprite:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
@@ -18,7 +18,7 @@ export const myPokemons = [
     nickname: "teik",
   },
   {
-    id: "5",
+    id: 5,
     name: "charmeleon",
     sprite:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
@@ -27,7 +27,7 @@ export const myPokemons = [
     nickname: "miii",
   },
   {
-    id: "6",
+    id: 6,
     name: "charizard",
     sprite:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
@@ -36,7 +36,7 @@ export const myPokemons = [
     nickname: "iiin",
   },
   {
-    id: "150",
+    id: 150,
     name: "mewtwo",
     sprite:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
