@@ -13,4 +13,13 @@ afterEach(() => server.resetHandlers());
 // Clean up after the tests are finished.
 afterAll(() => server.close());
 
-window.scrollTo = jest.fn();
+global.scrollTo = jest.fn();
+global.matchMedia =
+  global.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener: function () {},
+      removeListener: function () {},
+    };
+  };
