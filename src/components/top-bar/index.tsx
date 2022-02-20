@@ -57,7 +57,10 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
     height: "3em",
   });
 
-  const backIconStyle = css({
+  const backButton = css({
+    backgroundColor: "transparent",
+    color: "rgb(241 245 249)",
+    border: "none",
     cursor: "pointer",
     ":hover": {
       backgroundColor: "rgb(100 116 139)",
@@ -68,23 +71,24 @@ const TopBar: React.FC<Props> = ({ isDeepPath }) => {
   const handleBack = () => {
     if (location.key !== "default") navigate(-1);
     else navigate("/", { replace: true });
+
+    const htmlElement = document.getElementsByTagName("html")[0];
+    htmlElement.style.overflowY = "scroll";
   };
 
   return (
     <div css={baseStyle}>
-      <p css={containerStyle}>
+      <div css={containerStyle}>
         {isDeepPath ? (
-          <Icon
-            icon={chevronLeft}
-            css={[iconStyle, backIconStyle]}
-            onClick={handleBack}
-          />
+          <button css={backButton}>
+            <Icon icon={chevronLeft} css={iconStyle} onClick={handleBack} />
+          </button>
         ) : (
-          <span css={emptyIconStyle}></span>
+          <div css={emptyIconStyle}></div>
         )}
-        <span css={titleStyle}>{title}</span>
-        <span css={emptyIconStyle}></span>
-      </p>
+        <h1 css={titleStyle}>{title}</h1>
+        <div css={emptyIconStyle}></div>
+      </div>
     </div>
   );
 };

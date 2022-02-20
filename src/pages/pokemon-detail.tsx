@@ -96,8 +96,6 @@ const PokemonDetailPage = () => {
     else if (params.name && (!isNameVisible || isCatching)) changeTitle(params.name);
 
     return () => {
-      const htmlElement = document.getElementsByTagName("html")[0];
-      htmlElement.style.overflowY = "scroll";
       changeTitle("default");
     };
   }, [params, scrollY, changeTitle, isNameVisible, isCatching]);
