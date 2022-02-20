@@ -97,7 +97,7 @@ const CatchedState: React.FC<Props> = ({ data, handleClose }) => {
       </div>
       <form onSubmit={handleSubmit} css={formStyle}>
         <div>
-          <input type="text" ref={nicknameInputElement} autoFocus required />
+          <input type="text" ref={nicknameInputElement} required />
           <button type="submit" css={buttonStyle}>
             Save
           </button>
