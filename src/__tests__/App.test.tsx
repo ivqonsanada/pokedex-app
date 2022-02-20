@@ -1,19 +1,12 @@
-import ReactDOM from "react-dom";
+import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import App from "../App";
 
 it("renders without crashing", () => {
-  const div = document.createElement("div");
-  window.scrollTo = jest.fn();
-
-  ReactDOM.render(
+  const { container } = render(
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
-    div
+    </BrowserRouter>
   );
-
-  expect(div).toMatchSnapshot(); /* This is our snapshot */
-
-  ReactDOM.unmountComponentAtNode(div);
+  expect(container).toMatchSnapshot(); /* This is our snapshot */
 });
