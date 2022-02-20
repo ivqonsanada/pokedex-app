@@ -7,9 +7,9 @@ stages:
 build_app:
   stage: build
   script:
+    - npm install
     - npx eslint --fix
     - npx lint-staged
-    - npm install
     - npm run build
   artifacts:
     paths:
