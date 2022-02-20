@@ -1,7 +1,7 @@
 import { graphql } from "msw";
 import { pokemons } from "mocks/data/pokemons";
 import { blastoise } from "mocks/data/pokemon";
-import { notFound } from "mocks/data/not-found";
+import { notFound } from "mocks/data/pokemon-not-found";
 
 export const handlers = [
   graphql.query("getPokemonList", (_, res, ctx) => {
