@@ -41,7 +41,8 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
+      "plugin:jsx-a11y/recommended"
     ]
   },
   "jest": {
@@ -51,6 +52,7 @@
       "!src/service-worker.ts",
       "!src/serviceWorkerRegistration.ts",
       "!src/reportWebVitals.ts",
+      "!src/**/*.d.ts",
       "!src/index.tsx"
     ]
   },
