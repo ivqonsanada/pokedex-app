@@ -9,6 +9,11 @@ const view = (overrideProps = {}) =>
     <MyPokemonCardItem {...myPokemons[0]} handleRelease={jest.fn()} {...overrideProps} />
   )();
 
+test("render nickname", async () => {
+  view();
+  expect(await screen.findByText(myPokemons[0].nickname)).toBeVisible();
+});
+
 test("render animated sprite on hover", async () => {
   view();
   const image = await screen.findByAltText(/bulbasaur sprite/i);
