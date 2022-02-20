@@ -7,7 +7,7 @@ declare namespace Pokemon {
     previous?: string | null;
     results: BaseName[];
     status: boolean;
-    message: string;
+    message?: string;
   };
 
   type BaseName = {
@@ -25,16 +25,16 @@ declare namespace Pokemon {
     prevOffset?: number | null;
     results: PokemonItem[];
     status: boolean;
-    message: string;
+    message?: string;
   };
 
   type PokemonItem = {
     id: number;
-    url: string;
+    url?: string;
     name: string;
     image: string;
-    artwork: string;
-    dreamworld: string;
+    artwork?: string;
+    dreamworld?: string;
   };
 
   type Pokemon = {
