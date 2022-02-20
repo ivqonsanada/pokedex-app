@@ -5,6 +5,8 @@ import { renderWithRoute } from "mocks/renders";
 import MyPokemonListPage from "pages/my-pokemon-list";
 
 const view = renderWithRoute(<MyPokemonListPage />);
+const setupMyPokemonData = () =>
+  localStorage.setItem("my-pokemons", JSON.stringify(myPokemons));
 
 test("render top bar", () => {
   view();
@@ -18,7 +20,7 @@ test("render with no pokemon", () => {
 });
 
 test("render with pokemon", () => {
-  localStorage.setItem("my-pokemons", JSON.stringify(myPokemons));
+  setupMyPokemonData();
   view();
 
   const link = screen.getByRole("link", {
@@ -34,7 +36,7 @@ test("render with pokemon", () => {
 });
 
 test("release pokemon", async () => {
-  localStorage.setItem("my-pokemons", JSON.stringify(myPokemons));
+  setupMyPokemonData();
   view();
   const link = screen.getByRole("link", {
     name: /bulbasaur sprite #001 bulbasaur si ceria release/i,
