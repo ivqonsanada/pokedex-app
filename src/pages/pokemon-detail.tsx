@@ -2,7 +2,7 @@
 
 import { css } from "@emotion/react";
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useQueryParams } from "hooks/useQueryParams";
 import { useTopBar } from "contexts/topbar-context";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
@@ -16,8 +16,7 @@ import PokemonDetail from "components/pokemon-detail";
 const PokemonDetailPage = () => {
   const params = useParams();
   const { scrollY } = useWindowScrollPositions();
-  const location = useLocation();
-  const { nickname } = useQueryParams(location.search);
+  const { nickname } = useQueryParams();
   const { changeTitle } = useTopBar();
 
   const nameRef = useRef<HTMLDivElement | null>(null);
