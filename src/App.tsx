@@ -1,6 +1,6 @@
-import "./App.css";
-import Routes from "routes";
 import { Toaster } from "react-hot-toast";
+import Routes from "routes";
+
 import Provider from "./provider";
 
 function App() {

@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+import staticCDN from "convert-staticzap";
 import { useHover } from "hooks/useHover";
 import { Link } from "react-router-dom";
-import staticCDN from "convert-staticzap";
 
 type Props = {
   id: number | null;

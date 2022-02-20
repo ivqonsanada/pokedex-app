@@ -5,6 +5,7 @@ import { css } from "@emotion/react";
 import { useQueryParams } from "hooks/useQueryParams";
 import { useState } from "react";
 import { useLocation } from "react-router";
+
 import PokemonDetailAbout from "./about";
 import CatchButton from "./catch-button";
 import CatchModal from "./catch-modal";

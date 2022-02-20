@@ -7,6 +7,8 @@ stages:
 build_app:
   stage: build
   script:
+    - npx eslint --fix
+    - npx lint-staged
     - npm install
     - npm run build
   artifacts:
@@ -17,5 +19,4 @@ build_app:
 test_app:
   stage: test
   script:
-    - npx lint-staged
     - npm test -- --watchAll=false

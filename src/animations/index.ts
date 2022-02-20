@@ -1,6 +1,6 @@
-import { spin } from "./spin";
 import { bounce } from "./bounce";
-import { throwPokeBall } from "./throw-pokeball";
 import { pokeballCatch } from "./pokeball-catch";
+import { spin } from "./spin";
+import { throwPokeBall } from "./throw-pokeball";
 
-export { spin, bounce, throwPokeBall, pokeballCatch };
+export { bounce, pokeballCatch, spin, throwPokeBall };

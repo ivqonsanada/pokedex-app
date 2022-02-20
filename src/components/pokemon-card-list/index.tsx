@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { Pokemon } from "types/Pokemon";
-import PokemonCardItem from "./pokemon-card-item";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Pokemon } from "types/Pokemon";
+
+import PokemonCardItem from "./pokemon-card-item";
 
 type Props = {
   data?: Pokemon.PokemonList;

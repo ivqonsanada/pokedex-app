@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+
 import StatItem from "./stat-item";
 
 type Props = {

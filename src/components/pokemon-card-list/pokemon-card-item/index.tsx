@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+import staticCDN from "convert-staticzap";
 import { useHover } from "hooks/useHover";
 import { Link } from "react-router-dom";
 import { Pokemon } from "types/Pokemon";
-import staticCDN from "convert-staticzap";
 
 const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();

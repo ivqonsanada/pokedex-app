@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import { Pokemon } from "types/Pokemon";
+
 import TypeItem from "./type-item";
 
 type Props = {

@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { Icon } from "@iconify/react";
 import weightOutline from "@iconify/icons-healthicons/weight-outline";
 import rulerVertical from "@iconify/icons-la/ruler-vertical";
-import { useParams } from "react-router";
+import { Icon } from "@iconify/react";
+import configureMeasurements, { length, mass } from "convert-units";
 import { useUnit } from "hooks/useUnit";
-import configureMeasurements, { mass, length } from "convert-units";
+import { useParams } from "react-router";
 
 type Props = {
   data: any;
