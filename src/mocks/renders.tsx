@@ -2,11 +2,11 @@ import { render } from "@testing-library/react";
 import { GraphQLHandler, GraphQLRequest } from "msw";
 import Provider from "provider";
 import { BrowserRouter, Routes as AppRoutes, Route } from "react-router-dom";
-
 import { server } from "mocks/server";
 import MyPokemonListPage from "pages/my-pokemon-list";
 import PokemonDetailPage from "pages/pokemon-detail";
 import PokemonListPage from "pages/pokemon-list";
+import { Toaster } from "react-hot-toast";
 
 export const renderWithRoute =
   (ui: JSX.Element, { route = "/test", path = "/test" } = {}) =>
@@ -17,6 +17,7 @@ export const renderWithRoute =
     window.history.pushState({}, "Test page", route);
     render(
       <Provider>
+        <Toaster />
         <AppRoutes>
           <Route path="/" element={<PokemonListPage />} />
           <Route path="/pokemon/:id--:name" element={<PokemonDetailPage />} />
