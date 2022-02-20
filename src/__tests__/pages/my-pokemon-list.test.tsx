@@ -41,6 +41,7 @@ test("release pokemon", async () => {
   const link = screen.getByRole("link", {
     name: /bulbasaur sprite #001 bulbasaur si ceria release/i,
   });
+  expect(link).toBeVisible();
   const releaseButton = within(link).getByRole("button", { name: /release/i });
   userEvent.click(releaseButton);
   expect(link).not.toBeVisible();
