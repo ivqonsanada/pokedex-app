@@ -1,7 +1,8 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { renderWithRoute } from "mocks/renders";
 import PokemonDetailPage from "pages/pokemon-detail";
 import { blastoise } from "mocks/data/pokemon";
+import userEvent from "@testing-library/user-event";
 
 const view = renderWithRoute(<PokemonDetailPage />, {
   route: `/pokemon/${blastoise.id}--${blastoise.name}`,
@@ -30,6 +31,16 @@ test("render name", () => {
 
 test("render catch button", async () => {
   view();
+  const catchButton = await screen.findByRole("button", { name: /pokeball catch/i });
+  expect(catchButton).toBeVisible();
+  userEvent.click(catchButton);
+  expect(catchButton).toBeDisabled();
+});
 
-  await waitFor(() => expect(screen.getByRole("button", { name: /catch/i })));
+test("render pokemon detail about", async () => {
+  view();
+  expect(await screen.findByText(/about/i)).toBeVisible();
+  expect(
+    screen.getByText(/has 2 abilities:\. it also has 93 moves to use in a battle\./i)
+  ).toBeVisible();
 });
