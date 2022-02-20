@@ -1,4 +1,4 @@
-import { screen, within } from "@testing-library/react";
+import { screen, waitForElementToBeRemoved, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { myPokemons } from "mocks/data/my-pokemons";
 import { renderWithRoute } from "mocks/renders";
@@ -45,6 +45,27 @@ test("release pokemon", async () => {
   const releaseButton = within(link).getByRole("button", { name: /release/i });
   userEvent.click(releaseButton);
   expect(link).not.toBeVisible();
+});
+
+test("cancel release pokemon", async () => {
+  setupMyPokemonData();
+  view();
+  const link = screen.getByRole("link", {
+    name: /bulbasaur sprite #001 bulbasaur si ceria release/i,
+  });
+  expect(link).toBeVisible();
+  const releaseButton = within(link).getByRole("button", { name: /release/i });
+  userEvent.click(releaseButton);
+  expect(link).not.toBeVisible();
+  const cancelReleaseButton = screen.getAllByRole("button", {
+    name: /cancel release/i,
+  })[0];
+  userEvent.click(cancelReleaseButton);
+  expect(
+    await screen.findByRole("link", {
+      name: /bulbasaur sprite #001 bulbasaur si ceria release/i,
+    })
+  ).toBeVisible();
 });
 
 test("render nav menu", () => {
