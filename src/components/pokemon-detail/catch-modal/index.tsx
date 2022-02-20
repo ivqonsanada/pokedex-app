@@ -61,7 +61,7 @@ const CatchModal: React.FC<Props> = ({ data, state, closeModal, handleState }) =
       const htmlElement = document.getElementsByTagName("html")[0];
       htmlElement.style.overflowY = "scroll";
     };
-  }, []);
+  }, [handleState]);
 
   return (
     <div css={containerStyle}>
