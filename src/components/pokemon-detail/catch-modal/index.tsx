@@ -16,6 +16,7 @@ type Props = {
 
 const CatchModal: React.FC<Props> = ({ data, state, closeModal, handleState }) => {
   const containerStyle = css({
+    color: "rgb(226 232 240)",
     position: "fixed",
     display: "flex",
     flexDirection: "column",
