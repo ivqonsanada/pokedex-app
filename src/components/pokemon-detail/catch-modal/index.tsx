@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
 import { useEffect } from "react";
+import { css } from "@emotion/react";
 
 import CatchedState from "./catched-state";
 import CatchingState from "./catching-state";

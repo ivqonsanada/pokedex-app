@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
-import { usePokemon } from "contexts/pokemon-context";
-import staticCDN from "convert-staticzap";
 import { FormEvent, MutableRefObject, useRef, useState } from "react";
 import { useParams } from "react-router";
+import { css } from "@emotion/react";
+import staticCDN from "convert-staticzap";
+
+import { usePokemon } from "contexts/pokemon-context";
 
 type Props = {
   handleClose: () => void;

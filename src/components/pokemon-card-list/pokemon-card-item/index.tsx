@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import staticCDN from "convert-staticzap";
+
 import { useHover } from "hooks/useHover";
-import { Link } from "react-router-dom";
 import { Pokemon } from "types/Pokemon";
 
 const PokemonCardItem = ({ id, name, image }: Pokemon.BaseName) => {

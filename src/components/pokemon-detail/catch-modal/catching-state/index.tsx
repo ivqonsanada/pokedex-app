@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+
 import { pokeballCatch } from "animations";
 
 const CatchingState = () => {

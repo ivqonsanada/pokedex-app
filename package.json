@@ -59,7 +59,25 @@
       ],
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error"
-    }
+    },
+    "overrides": [
+      {
+        "files": ["*.tsx", "*.ts"],
+        "rules": {
+          "simple-import-sort/imports": [
+            "error",
+            {
+              "groups": [
+                ["^react", "^@?\\w"],
+                ["^(__tests__|animations|contexts|data|graphql|hooks|mocks|types)(/.*|$)", "^\\."],
+                ["^(components|pages|provider|routes)(/.*|$)", "^\\."],
+                ["^[^.]"]
+              ]
+            }
+          ]
+        }
+      }
+    ]
   },
   "jest": {
     "collectCoverageFrom": [
@@ -78,7 +96,7 @@
     "trailingComma": "es5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": "prettier --write"
+    "*.{js,jsx,ts,tsx,css}": ["eslint --fix", "prettier --write"]
   },
   "browserslist": {
     "production": [

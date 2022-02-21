@@ -1,15 +1,17 @@
 /** @jsxImportSource @emotion/react */
 
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
 import pokemonIcon from "@iconify/icons-simple-icons/pokemon";
 import { Icon } from "@iconify/react";
-import Container from "components/layout/container";
-import PokemonCardList from "components/pokemon-card-list";
+
 import { usePokemon } from "contexts/pokemon-context";
 import { GET_POKEMON_LIST } from "graphql/queries";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
-import { Link } from "react-router-dom";
+
+import Container from "components/layout/container";
+import PokemonCardList from "components/pokemon-card-list";
 
 const PokemonListPage = () => {
   const { scrollY } = useWindowScrollPositions();

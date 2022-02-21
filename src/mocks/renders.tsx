@@ -1,12 +1,14 @@
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Route, Routes as AppRoutes } from "react-router-dom";
 import { render } from "@testing-library/react";
-import { server } from "mocks/server";
 import { GraphQLHandler, GraphQLRequest } from "msw";
+
+import { server } from "mocks/server";
+
 import MyPokemonListPage from "pages/my-pokemon-list";
 import PokemonDetailPage from "pages/pokemon-detail";
 import PokemonListPage from "pages/pokemon-list";
 import Provider from "provider";
-import { Toaster } from "react-hot-toast";
-import { BrowserRouter, Route, Routes as AppRoutes } from "react-router-dom";
 
 export const renderWithRoute =
   (ui: JSX.Element, { route = "/test", path = "/test" } = {}) =>

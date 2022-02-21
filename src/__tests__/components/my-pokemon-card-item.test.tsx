@@ -1,8 +1,10 @@
 import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import MyPokemonCardItem from "components/my-pokemon-card-list/my-pokemon-card-item";
+
 import { myPokemons } from "mocks/data/my-pokemons";
 import { renderWithRoute } from "mocks/renders";
+
+import MyPokemonCardItem from "components/my-pokemon-card-list/my-pokemon-card-item";
 
 const view = (overrideProps = {}) =>
   renderWithRoute(

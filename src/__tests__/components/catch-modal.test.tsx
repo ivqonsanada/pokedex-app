@@ -1,9 +1,11 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CatchModal from "components/pokemon-detail/catch-modal";
+
 import { myPokemons } from "mocks/data/my-pokemons";
 import { blastoise } from "mocks/data/pokemon";
 import { renderWithRoute } from "mocks/renders";
+
+import CatchModal from "components/pokemon-detail/catch-modal";
 
 const view = (overrideProps = {}) =>
   renderWithRoute(

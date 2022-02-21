@@ -1,7 +1,9 @@
 import { screen } from "@testing-library/react";
-import { renderWithRoute } from "mocks/renders";
-import TypeItem from "components/pokemon-detail/type-list/type-item";
+
 import { blastoise } from "mocks/data/pokemon";
+import { renderWithRoute } from "mocks/renders";
+
+import TypeItem from "components/pokemon-detail/type-list/type-item";
 
 const view = (overrideProps = {}) =>
   renderWithRoute(<TypeItem data={blastoise.types![0]} {...overrideProps} />)();

@@ -1,7 +1,9 @@
-import PokemonDetailAbout from "components/pokemon-detail/about";
 import { screen } from "@testing-library/react";
-import { renderWithRoute } from "mocks/renders";
+
 import { blastoise } from "mocks/data/pokemon";
+import { renderWithRoute } from "mocks/renders";
+
+import PokemonDetailAbout from "components/pokemon-detail/about";
 
 const view = renderWithRoute(
   <PokemonDetailAbout data={blastoise} moves={blastoise.moves!.length} />,

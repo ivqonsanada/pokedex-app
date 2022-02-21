@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
+import { useLocation } from "react-router";
 import { css } from "@emotion/react";
 import uiUserProfile from "@iconify/icons-healthicons/ui-user-profile";
 import pokeballIcon from "@iconify/icons-mdi/pokeball";
-import { useLocation } from "react-router";
 
 import NavItem from "./nav-item";
 

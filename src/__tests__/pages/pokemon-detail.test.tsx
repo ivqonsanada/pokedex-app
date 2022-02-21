@@ -1,7 +1,9 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import { blastoise } from "mocks/data/pokemon";
 import { renderWithRoute } from "mocks/renders";
+
 import PokemonDetailPage from "pages/pokemon-detail";
 
 const view = renderWithRoute(<PokemonDetailPage />, {

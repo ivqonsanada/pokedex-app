@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { css } from "@emotion/react";
 
 interface PokemonContextInterface {
   myPokemons: [];
@@ -48,7 +48,7 @@ const PokemonProvider: React.FC = (props) => {
     setMyPokemons(newMyPokemons);
     localStorage.setItem(storageKey, JSON.stringify(newMyPokemons));
     toast(
-      (t) => (
+      () => (
         <span>
           Yay! <b>{nickname}</b> now become your partner!
         </span>
@@ -74,7 +74,7 @@ const PokemonProvider: React.FC = (props) => {
       toast.dismiss(t.id);
 
       toast(
-        (t) => (
+        () => (
           <span>
             <b>{nickname}</b> glad you cancel on releasing it.
           </span>

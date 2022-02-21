@@ -1,7 +1,8 @@
 import { Toaster } from "react-hot-toast";
-import Routes from "routes";
 
 import Provider from "./provider";
+
+import Routes from "routes";
 
 function App() {
   const toasterContainerStyle = {

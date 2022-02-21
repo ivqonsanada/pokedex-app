@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import NavMenu from "components/nav-menu";
-import TopBar from "components/top-bar";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { css } from "@emotion/react";
+
+import NavMenu from "components/nav-menu";
+import TopBar from "components/top-bar";
 
 const Container: React.FC = ({ children }) => {
   const [isDeepPath, setIsDeepPath] = useState(false);

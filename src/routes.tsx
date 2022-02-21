@@ -1,7 +1,8 @@
+import { Route, Routes as AppRoutes } from "react-router-dom";
+
 import MyPokemonListPage from "pages/my-pokemon-list";
 import PokemonDetailPage from "pages/pokemon-detail";
 import PokemonListPage from "pages/pokemon-list";
-import { Route, Routes as AppRoutes } from "react-router-dom";
 
 const Routes = () => {
   return (

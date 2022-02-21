@@ -1,6 +1,8 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import { renderWithRoute } from "mocks/renders";
+
 import PokemonListPage from "pages/pokemon-list";
 
 const view = renderWithRoute(<PokemonListPage />);

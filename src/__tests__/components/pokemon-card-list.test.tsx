@@ -1,8 +1,10 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import PokemonCardList from "components/pokemon-card-list";
+
 import { pokemons } from "mocks/data/pokemons";
 import { renderWithRoute } from "mocks/renders";
+
+import PokemonCardList from "components/pokemon-card-list";
 
 const view = renderWithRoute(<PokemonCardList data={pokemons} loadMore={jest.fn()} />);
 

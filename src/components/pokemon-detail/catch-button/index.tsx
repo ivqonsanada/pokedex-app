@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
+
 import { bounce, throwPokeBall } from "animations";
 import { UseWindowSize } from "hooks/useWindowSize";
 

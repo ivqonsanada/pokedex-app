@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { usePokemon } from "contexts/pokemon-context";
 
+import { usePokemon } from "contexts/pokemon-context";
 import MyPokemonCardItem from "./my-pokemon-card-item";
 
 type Props = {

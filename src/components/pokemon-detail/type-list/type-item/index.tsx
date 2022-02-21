@@ -2,6 +2,7 @@
 
 import { css } from "@emotion/react";
 import { Icon } from "@iconify/react";
+
 import { POKEMON_TYPES } from "data/pokemon-type";
 import { Pokemon } from "types/Pokemon";
 

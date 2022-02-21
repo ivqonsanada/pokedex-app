@@ -1,17 +1,19 @@
 /** @jsxImportSource @emotion/react */
 
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router";
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
-import Container from "components/layout/container";
-import PokemonDetail from "components/pokemon-detail";
-import { useTopBar } from "contexts/topbar-context";
 import staticCDN from "convert-staticzap";
+
+import { useTopBar } from "contexts/topbar-context";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 import { useQueryParams } from "hooks/useQueryParams";
 import { useWindowScrollPositions } from "hooks/useWindowScrollPositions";
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router";
+
+import Container from "components/layout/container";
+import PokemonDetail from "components/pokemon-detail";
 
 const PokemonDetailPage = () => {
   const params = useParams();

@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { Icon, IconifyIcon } from "@iconify/react";
-import { Link } from "react-router-dom";
 
 type Props = {
   icon: IconifyIcon;
