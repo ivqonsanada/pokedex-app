@@ -1,11 +1,14 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { myPokemons } from "mocks/data/my-pokemons";
 import { renderWithRoute } from "mocks/renders";
 
 import PokemonListPage from "pages/pokemon-list";
 
 const view = renderWithRoute(<PokemonListPage />);
+const setupMyPokemonData = () =>
+  localStorage.setItem("my-pokemons", JSON.stringify(myPokemons));
 
 test("render top bar", () => {
   view();
@@ -14,7 +17,27 @@ test("render top bar", () => {
 
 test("render owned total", () => {
   view();
-  expect(screen.getByText(/owned/i)).toBeVisible();
+  expect(screen.getByRole("button", { name: /owned 0/i })).toBeVisible();
+});
+
+test("render pokemon owned modal without my pokemons on click", () => {
+  view();
+  const ownedButton = screen.getByRole("button", { name: /owned/i });
+  expect(ownedButton).toBeVisible();
+  expect(screen.queryByText(/you don't own any pokemon yet\./i)).not.toBeInTheDocument();
+  userEvent.click(ownedButton);
+  expect(screen.getByText(/you don't own any pokemon yet\./i)).toBeVisible();
+});
+
+test("render pokemon owned modal with my pokemons on click", () => {
+  setupMyPokemonData();
+  view();
+  const ownedButton = screen.getByRole("button", { name: /owned/i });
+  expect(ownedButton).toBeVisible();
+  expect(screen.queryByText(/you don't own any pokemon yet\./i)).not.toBeInTheDocument();
+  userEvent.click(ownedButton);
+  expect(screen.queryByText(/you don't own any pokemon yet\./i)).not.toBeInTheDocument();
+  expect(screen.getByRole("img", { name: /bulbasaur mini sprite/i })).toBeVisible();
 });
 
 test("render loading pokemon list", () => {

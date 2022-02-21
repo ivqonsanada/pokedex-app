@@ -30,6 +30,10 @@ const OwnedModal = () => {
   const containerStyle = css({
     margin: "20px 0 12px",
     transition: "0.3s ease",
+    "> p": {
+      textAlign: "center",
+      color: "rgb(203 213 225)",
+    },
   });
 
   const totalEachContainerStyle = css({
@@ -59,9 +63,15 @@ const OwnedModal = () => {
         <div>
           {totalEachMyPokemons.map((e) => {
             return (
-              <div css={totalEachContainerStyle}>
+              <div css={totalEachContainerStyle} key={e[0].id}>
                 <div>
-                  <img src={e[0].sprite} alt={e[0].name + " sprite"} width={48} />
+                  <img
+                    src={e[0].sprite}
+                    alt={e[0].name + " mini sprite"}
+                    width={48}
+                    height={48}
+                    crossOrigin="anonymous"
+                  />
                   <p>{e[0].name}</p>
                 </div>
                 <p>{e.length}</p>
@@ -69,6 +79,7 @@ const OwnedModal = () => {
             );
           })}
         </div>
+        {(myPokemons.length === 0 || null) && <p>You don't own any pokemon yet.</p>}
       </div>
     </>
   );
