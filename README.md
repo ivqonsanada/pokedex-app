@@ -1,7 +1,8 @@
 
 # Pokédex - A Gamify Pokemon Catalog App
 
-
+<img src="src/../public/images/pokemon-list-page.png" width="240"/>
+<img src="src/../public/images/pokemon-detail-page.gif" width="240"/>
 
 ## Run Locally
 
