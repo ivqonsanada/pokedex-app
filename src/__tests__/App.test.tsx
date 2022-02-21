@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 
 import App from "../App";
 
-it("renders without crashing", () => {
+test("renders without crashing", () => {
   const { container } = render(
     <BrowserRouter>
       <App />
