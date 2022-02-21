@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useLocation } from "react-router";
 import { ApolloError } from "@apollo/client";
 import { css } from "@emotion/react";
@@ -67,11 +67,11 @@ const PokemonDetail: React.FC<Props> = ({
     setState("Catching");
   };
 
-  const handleState = () => {
+  const handleState = useCallback(() => {
     const isCatched = Math.random() > 0.5;
     if (isCatched) setState("Catched");
     else setState("Run Away");
-  };
+  }, []);
 
   const loadingStyle = css({
     color: "rgb(100 116 139)",
