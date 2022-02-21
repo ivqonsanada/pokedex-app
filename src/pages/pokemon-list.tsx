@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
+import { Helmet } from "react-helmet";
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
 
@@ -34,6 +35,9 @@ const PokemonListPage = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Pokédex - A Gamify Pokemon Catalog App</title>
+      </Helmet>
       <PokemonOwned />
       {isLoading && <p css={loadingStyle}>Loading...</p>}
       {isError && <p css={loadingStyle}>Seems something bad happen to the server.</p>}

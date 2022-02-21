@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router";
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
@@ -84,15 +85,15 @@ const PokemonDetailPage = () => {
     e.target.style.width = "100%";
   };
 
-  useEffect(() => {
-    const formatId = (id: number | string) => {
-      if (id) {
-        if (id < 10) return "#00" + id;
-        if (id < 100) return "#0" + id;
-        else return "#" + id;
-      } else return "#????";
-    };
+  const formatId = (id: number | string) => {
+    if (id) {
+      if (id < 10) return "#00" + id;
+      if (id < 100) return "#0" + id;
+      else return "#" + id;
+    } else return "#????";
+  };
 
+  useEffect(() => {
     if (params.id && (scrollY === 0 || isNameVisible) && !isCatching)
       changeTitle(formatId(params.id));
     else if (params.name && (!isNameVisible || isCatching)) changeTitle(params.name);
@@ -104,6 +105,11 @@ const PokemonDetailPage = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>{`${formatId(params.id || 0)} ${
+          params.name![0].toUpperCase() + params.name!.slice(1)
+        } | Pokédex`}</title>
+      </Helmet>
       <div css={containerStyle}>
         <img
           src={staticCDN(pokemon.spriteAnimated) || pokemon.spriteAnimated}

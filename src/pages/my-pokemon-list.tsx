@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
@@ -44,6 +45,10 @@ const MyPokemonListPage = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>My Pokemon | Pokédex</title>
+      </Helmet>
+
       {myPokemons.length === 0 && (
         <div css={noPokemonStyle}>
           <img

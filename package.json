@@ -19,6 +19,7 @@
     "graphql": "16.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
     "react-hot-toast": "2.2.0",
     "react-infinite-scroll-component": "6.1.0",
     "react-router": "6.2.1",
@@ -62,16 +63,30 @@
     },
     "overrides": [
       {
-        "files": ["*.tsx", "*.ts"],
+        "files": [
+          "*.tsx",
+          "*.ts"
+        ],
         "rules": {
           "simple-import-sort/imports": [
             "error",
             {
               "groups": [
-                ["^react", "^@?\\w"],
-                ["^(__tests__|animations|contexts|data|graphql|hooks|mocks|types)(/.*|$)", "^\\."],
-                ["^(components|pages|provider|routes)(/.*|$)", "^\\."],
-                ["^[^.]"]
+                [
+                  "^react",
+                  "^@?\\w"
+                ],
+                [
+                  "^(__tests__|animations|contexts|data|graphql|hooks|mocks|types)(/.*|$)",
+                  "^\\."
+                ],
+                [
+                  "^(components|pages|provider|routes)(/.*|$)",
+                  "^\\."
+                ],
+                [
+                  "^[^.]"
+                ]
               ]
             }
           ]
@@ -96,7 +111,10 @@
     "trailingComma": "es5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "*.css": "prettier --write"
   },
   "browserslist": {
@@ -130,6 +148,7 @@
     "@iconify/icons-simple-icons": "1.2.1",
     "@iconify/icons-wi": "1.2.1",
     "@iconify/react": "3.1.3",
+    "@types/react-helmet": "^6.1.5",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-prettier": "4.0.0",
