@@ -49,7 +49,7 @@ const PokemonOwned = () => {
     display: "inline-flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: showModal ? "flex-end" : "center",
+    alignItems: "center",
     marginLeft: 128,
     "span:last-of-type": {
       fontWeight: "bold",

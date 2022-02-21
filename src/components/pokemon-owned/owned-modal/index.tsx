@@ -30,9 +30,16 @@ const OwnedModal = () => {
   const containerStyle = css({
     margin: "20px 0 12px",
     transition: "0.3s ease",
+    maxHeight: "65vh",
+    overflowY: "auto",
     "> p": {
       textAlign: "center",
       color: "rgb(203 213 225)",
+    },
+    "> div": {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(19ch, 1fr))",
+      gap: "4px",
     },
   });
 
