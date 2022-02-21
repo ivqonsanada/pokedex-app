@@ -48,9 +48,10 @@ const MyPokemonListPage = () => {
         <div css={noPokemonStyle}>
           <img
             src="https://cdn.statically.io/gh/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/143.gif"
-            alt="Charizard sprite"
+            alt="Snorlax animated sprite"
             width={160}
             height={160}
+            crossOrigin="anonymous"
           />
           <div>
             <p>You don't have any pokemon yet.</p>
