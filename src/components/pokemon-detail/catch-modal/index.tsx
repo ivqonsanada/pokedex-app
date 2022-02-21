@@ -35,20 +35,6 @@ const CatchModal: React.FC<Props> = ({ data, state, closeModal, handleState }) =
     "> * + *": {
       marginTop: "24px",
     },
-    "input[type=text]": {
-      padding: "8px 16px",
-      backgroundColor: "rgb(51 65 85)",
-      border: "solid 2px rgb(71 85 105)",
-      borderRadius: "0.4em",
-      color: "rgb(226 232 240)",
-      fontWeight: "bold",
-      fontSize: "1em",
-      width: "100%",
-    },
-    "input[type=text]:focus": {
-      border: "solid 2px rgb(148 163 184)",
-      outline: "none",
-    },
   });
 
   useEffect(() => {
