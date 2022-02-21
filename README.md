@@ -1,8 +1,10 @@
 
 # Pokédex - A Gamify Pokemon Catalog App
 
-<img src="src/../public/images/pokemon-list-page.png" width="240"/>
-<img src="src/../public/images/pokemon-detail-page.gif" width="240"/>
+<p float="left">
+  <img src="src/../public/images/pokemon-list-page.png" width="48%" />
+  <img src="src/../public/images/pokemon-detail-page.gif"  width="48%" /> 
+</p>
 
 ## Run Locally
 
@@ -13,25 +15,25 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/ivqonsanada/pokedex-app.git
+git clone https://github.com/ivqonsanada/pokedex-app.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd pokedex-app
+cd pokedex-app
 ```
 
 Install dependencies
 
 ```bash
-  npm install 
+npm install 
 ```
 
 Start the server
 
 ```bash
-  npm start
+npm start
 ```
 
 Open http://localhost:3000 with your browser to see the result.
