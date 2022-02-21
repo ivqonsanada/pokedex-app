@@ -96,7 +96,8 @@
     "trailingComma": "es5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": ["eslint --fix", "prettier --write"]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{css}": "prettier --write"
   },
   "browserslist": {
     "production": [

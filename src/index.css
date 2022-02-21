@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   overflow-y: scroll;
-  background: rgb(15 23 42);
+  background-color: rgb(15 23 42);
 }
 
 *,
@@ -20,6 +20,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: rgb(241 245 249);
   box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
 }
 
 code {
