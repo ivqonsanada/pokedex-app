@@ -156,7 +156,7 @@
     "eslint-plugin-unused-imports": "2.0.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.5",
-    "msw": "0.38.2",
+    "msw": "0.39.2",
     "prettier": "2.5.1"
   }
 }
