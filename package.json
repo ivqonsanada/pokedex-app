@@ -147,7 +147,7 @@
     "@iconify/icons-ph": "1.2.1",
     "@iconify/icons-simple-icons": "1.2.7",
     "@iconify/icons-wi": "1.2.1",
-    "@iconify/react": "3.2.0",
+    "@iconify/react": "3.2.1",
     "@types/react-helmet": "6.1.5",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
