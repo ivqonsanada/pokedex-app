@@ -4,6 +4,9 @@
 ## Description
 Pokedex asdf. adsf sdf ....
 
+## sesuatu
+asdfasdfsdf
+
 <p float="left">
   <img src="src/../public/images/pokemon-list-page.png" width="48%" />
   <img src="src/../public/images/pokemon-detail-page.gif"  width="48%" /> 
