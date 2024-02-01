@@ -1,9 +1,6 @@
 
 # Pokédex - A Gamify Pokemon Catalog App
 
-## Description
-Pokedex asdf. adsf sdf ....
-
 <p float="left">
   <img src="src/../public/images/pokemon-list-page.png" width="48%" />
   <img src="src/../public/images/pokemon-detail-page.gif"  width="48%" /> 
