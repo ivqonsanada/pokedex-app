@@ -3,8 +3,9 @@
 import { FormEvent, MutableRefObject, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { css } from "@emotion/react";
-import staticCDN from "convert-staticzap";
 
+// TODO: Use staticCDN again after the SSL issue resolved
+// import staticCDN from "convert-staticzap";
 import { usePokemon } from "contexts/pokemon-context";
 
 type Props = {
@@ -99,7 +100,7 @@ const CatchedState: React.FC<Props> = ({ data, handleClose }) => {
   return (
     <>
       <img
-        src={staticCDN(data.spriteAnimated) || data.spriteAnimated}
+        src={data.spriteAnimated}
         css={pokemonStyle}
         width={180}
         height={180}

@@ -5,8 +5,9 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router";
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/react";
-import staticCDN from "convert-staticzap";
 
+// TODO: Use staticCDN again after the SSL issue resolved
+// import staticCDN from "convert-staticzap";
 import { useTopBar } from "contexts/topbar-context";
 import { GET_POKEMON_BY_NAME } from "graphql/queries";
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
@@ -81,14 +82,14 @@ const PokemonDetailPage = () => {
   const spacingY = css({ "> * + *": { marginTop: "24px" } });
 
   const handleImageError = (e: any) => {
-    e.target.src = staticCDN(pokemon.sprite) || pokemon.sprite;
+    e.target.src = pokemon.sprite;
     e.target.style.width = "100%";
   };
 
   const formatId = (id: number | string) => {
     if (id) {
-      if (id < 10) return "#00" + id;
-      if (id < 100) return "#0" + id;
+      if (Number(id) < 10) return "#00" + id;
+      if (Number(id) < 100) return "#0" + id;
       else return "#" + id;
     } else return "#????";
   };
@@ -112,7 +113,7 @@ const PokemonDetailPage = () => {
       </Helmet>
       <div css={containerStyle}>
         <img
-          src={staticCDN(pokemon.spriteAnimated) || pokemon.spriteAnimated}
+          src={pokemon.spriteAnimated}
           css={[spriteStyle, isCatching && fadeOutEffect]}
           onError={handleImageError}
           width={224}

@@ -2,8 +2,9 @@
 
 import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
-import staticCDN from "convert-staticzap";
 
+// TODO: Use staticCDN again after the SSL issue resolved
+// import staticCDN from "convert-staticzap";
 import { useHover } from "hooks/useHover";
 
 type Props = {
@@ -93,7 +94,7 @@ const MyPokemonCardItem: React.FC<Props> = ({
     <Link to={path}>
       <div css={containerStyle} ref={hoverRef}>
         <img
-          src={staticCDN(image) || image}
+          src={image}
           css={imageStyle}
           width={200}
           height={200}

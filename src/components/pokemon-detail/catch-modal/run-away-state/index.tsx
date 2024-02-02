@@ -2,7 +2,8 @@
 
 import { useParams } from "react-router";
 import { css } from "@emotion/react";
-import staticCDN from "convert-staticzap";
+// TODO: Use staticCDN again after the SSL issue resolved
+// import staticCDN from "convert-staticzap";
 
 type Props = {
   handleClose: () => void;
@@ -36,7 +37,7 @@ const RunAwayState: React.FC<Props> = ({ handleClose }) => {
   return (
     <>
       <img
-        src={staticCDN(spriteRunAway) || spriteRunAway}
+        src={spriteRunAway}
         css={pokemonStyle}
         width={180}
         height={180}

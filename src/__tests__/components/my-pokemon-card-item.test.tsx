@@ -39,13 +39,15 @@ test("id is null", async () => {
   expect(screen.getByText(/#\?\?\?/i)).toBeVisible();
 });
 
-test("staticCDN with known src", async () => {
+// TODO: Use staticCDN again after the SSL issue resolved
+test.skip("staticCDN with known src", async () => {
   view({ sprite: myPokemons[0].sprite });
   const image = screen.getByAltText(/sprite/i);
   expect(image).toHaveAttribute("src", expect.not.stringMatching(myPokemons[0].sprite));
 });
 
-test("staticCDN with unknown src", async () => {
+// TODO: Use staticCDN again after the SSL issue resolved
+test.skip("staticCDN with unknown src", async () => {
   view({ sprite: "http://unknown.com" });
   const image = screen.getByAltText(/sprite/i);
   expect(image).toHaveAttribute("src", expect.stringMatching("http://unknown.com"));

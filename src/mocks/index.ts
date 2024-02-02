@@ -1,4 +1,4 @@
-import { SharedOptions } from "msw/lib/types/sharedOptions";
+import { SharedOptions } from "msw";
 
 if (typeof window === "undefined") {
   const { server } = require("./server");
