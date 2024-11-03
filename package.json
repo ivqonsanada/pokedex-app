@@ -152,7 +152,7 @@
     "@iconify/icons-wi": "1.2.3",
     "@iconify/react": "3.2.2",
     "@types/react-helmet": "6.1.11",
-    "eslint-config-prettier": "8.10.0",
+    "eslint-config-prettier": "9.1.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-simple-import-sort": "7.0.0",
